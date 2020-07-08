@@ -193,6 +193,31 @@ int start(RenderWindow& window)
     txt.setCharacterSize(23);
     txt.setPosition(txt_score.getPosition().x + txt_score.getLocalBounds().width / 2 - 32, txt_score.getPosition().y + txt_score.getGlobalBounds().height + 35);
 
+
+	Text txt2;
+	txt2.setFont(font_manaspc);
+	txt2.setFillColor(Color::Green);
+	txt2.setCharacterSize(23);
+	txt2.setString("+10");
+
+	Text txt3;
+	txt3.setFont(font_manaspc);
+	txt3.setFillColor(Color::Cyan);
+	txt3.setCharacterSize(23);
+	txt3.setString("Nice!");
+
+	Text txt4;
+	txt4.setFont(font_manaspc);
+	txt4.setFillColor(Color::Yellow);
+	txt4.setCharacterSize(23);
+	txt4.setString("Perfect;>");
+
+	Text txt5;
+	txt5.setFont(font_manaspc);
+	txt5.setFillColor(Color::Blue);
+	txt5.setCharacterSize(23);
+	txt5.setString("Master;)");
+
     while (op == 1)
     {
         srand(time(0));
@@ -282,11 +307,18 @@ int start(RenderWindow& window)
                 window.clear();
 
                 // Draw background
-                for (int i = 0; i < N; i++)
-                    for (int j = 0; j < M; j++)
-                    {
-                        sprite_white.setPosition(i * img_size, j * img_size);  window.draw(sprite_white);
-                    }
+				for (int x = width_board - img_size; x > -1; x -= img_size) { sprite_purple.setPosition(x, 0);  window.draw(sprite_purple); } // Draw top Border
+				for (int y = height_board - 2 * img_size; y > 0; y -= img_size)
+				{
+					sprite_purple.setPosition(0, y);  window.draw(sprite_purple); // Draw left Border
+					for (int x = width_board - 2 * img_size; x > 0; x -= img_size)
+					{
+						sprite_white.setPosition(x, y);  window.draw(sprite_white);
+					}
+					sprite_purple.setPosition(width_board - img_size, y);  window.draw(sprite_purple); // Draw right Border
+				}
+				for (int x = width_board - img_size; x > -1; x -= img_size) { sprite_purple.setPosition(x, height_board - img_size);  window.draw(sprite_purple); } // Draw bottom Border
+
                 // Draw snake
                 for (int i = 0; i < length; i++)
                 {
@@ -298,6 +330,48 @@ int start(RenderWindow& window)
 
                 // Draw UI
                 txt.setString(std::to_string(score)); window.draw(txt); window.draw(txt_score);
+
+				// draw effect
+				ran = rand() % 3;
+				if (foodeating)
+				{
+					effect_count_down = 7;
+					k = 18;
+				}
+				if (effect_count_down > 0)
+				{
+					txt2.setPosition(txt.getPosition().x + txt.getLocalBounds().width + 16, txt.getPosition().y);
+					window.draw(txt2);
+					effect_count_down--;
+				}
+
+				switch (ran)
+				{
+				default:
+					break;
+				case 1:
+					if (k > 0) {
+						txt3.setPosition(txt_score.getPosition().x, txt_score.getPosition().y - 50);
+						window.draw(txt3);
+						k--;
+					}
+					break;
+
+				case 2:
+					if (k > 0) {
+						txt4.setPosition(txt_score.getPosition().x, txt_score.getPosition().y - 70);
+						window.draw(txt4);
+						k--;
+					}
+					break;
+				case 0:
+					if (k > 0) {
+						txt5.setPosition(txt_score.getPosition().x, txt_score.getPosition().y - 90);
+						window.draw(txt5);
+						k--;
+					}
+					break;
+				}
 
                 
                 window.display();
