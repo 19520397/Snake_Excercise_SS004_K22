@@ -1,7 +1,7 @@
 ﻿  snake_2.cpp
-D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(189,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(196,37): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(205,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(366,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(366,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(190,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(197,37): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(206,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(479,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(479,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
   snake_2.vcxproj -> D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\snake_2\x64\Debug\snake_2.exe
