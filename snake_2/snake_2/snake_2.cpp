@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <time.h>
 #include <iostream>
 #include <string>
@@ -14,7 +15,7 @@ enum DIRECTION
     DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_LEFT, DIRECTION_DOWN
 };
 
-int score;
+int score = 0;
 
 // Width and Height of window in grid
 int N = 40, M = 40;
@@ -34,7 +35,7 @@ float height_UI = height_board;
 
 
 DIRECTION direction;
-int length;
+int length = 3;
 
 struct Snake
 {
@@ -48,13 +49,13 @@ struct Fruit
 
 void loadScreen();
 int start(RenderWindow&);
-void update(Snake*&, Fruit&);
+void update(Snake*&, Fruit&, Sound&);
 void gameOver();
 int show_credit(RenderWindow&);
 int checkPlayAgain(RenderWindow&);
 int checkResume(RenderWindow&);
 
-void update(Snake*& s, Fruit& f)
+void update(Snake*& s, Fruit& f, Sound& sound_eatfood)
 {
     // Update snake's body position
     for (int i = length; i > 0; --i)
@@ -84,6 +85,7 @@ void update(Snake*& s, Fruit& f)
                 i = 0;
             }
         }
+        sound_eatfood.play();
         score += 10;
         length++;
         foodeating = true;
@@ -134,6 +136,12 @@ int start(RenderWindow& window)
 
     Snake* s = new Snake[MAX];
     Fruit f;
+
+    Sound sound_eatfood;
+    SoundBuffer buffer;
+    buffer.loadFromFile("audio/eatfood.ogg");
+    sound_eatfood.setBuffer(buffer);
+    sound_eatfood.setVolume(50.f);
 
     Texture t1, t2, t3, t4, t_intruct, t_pause;
     t1.loadFromFile("images/white.png");
@@ -267,7 +275,7 @@ int start(RenderWindow& window)
                 // Delay time has reached, reset timer
                 timer = 0;
                 // Update position of object 
-                update(s, f);
+                update(s, f, sound_eatfood);
 
 #pragma region Draw
 
@@ -470,6 +478,15 @@ int checkPlayAgain(RenderWindow& window)
     Sprite last_state(t);
     Font font;
 
+    Sound sound_die, sound_choose;
+    SoundBuffer buffer_die, buffer_choose;
+    buffer_die.loadFromFile("audio/message.ogg");
+    buffer_choose.loadFromFile("audio/beforegame.ogg");
+    sound_die.setBuffer(buffer_die);
+    sound_die.setVolume(50.f);
+    sound_choose.setBuffer(buffer_choose);
+    sound_choose.setVolume(50.f);
+
     if (!font.loadFromFile("Fonts/ARCADECLASSIC.TTF"))
     {
         cout << "ERROR: Could not load font";
@@ -489,6 +506,7 @@ int checkPlayAgain(RenderWindow& window)
     txt2.setCharacterSize(70);
 
     bool isChanged = true;
+    sound_die.play();
     while (window.isOpen())
     {
         if (Keyboard::isKeyPressed(Keyboard::Enter))
@@ -523,6 +541,7 @@ int checkPlayAgain(RenderWindow& window)
         {
             window.clear();
             window.draw(last_state);
+            sound_choose.play();
 
             txt.setFillColor(Color::Red);
             txt.setCharacterSize(180);
@@ -623,6 +642,13 @@ void loadScreen()
     window.setPosition(Vector2i(15, 15));
     float width = width_board + width_UI;
     int op = 2;
+
+    Sound sound_choose;
+    SoundBuffer buffer;
+    buffer.loadFromFile("audio/beforegame.ogg");
+    sound_choose.setBuffer(buffer);
+    sound_choose.setVolume(30.f);
+
     while (op > 0)
     {
         {
@@ -676,6 +702,7 @@ void loadScreen()
                 if (isChanged)
                 {
                     window.clear();
+                    sound_choose.play();
 
                     txt.setFillColor(Color::Green);
                     txt.setCharacterSize(72);
