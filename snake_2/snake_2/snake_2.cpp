@@ -2,70 +2,63 @@
 #include <time.h>
 #include <iostream>
 #include <string>
-
 using namespace sf;
 using std::cin;
 using std::cout;
 
-bool isPlaying = false;
+bool isAlive = false;
+bool foodeating = false;
 
 enum DIRECTION
 {
-    DIRECTION_RIGHT = 1, DIRECTION_UP = 2, DIRECTION_LEFT = 3, DIRECTION_DOWN = 4
+    DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_LEFT, DIRECTION_DOWN
 };
 
-int score = 1;
+int score;
 
-// Height vs width of window in grid
-int N = 50, M = 50;
+// Width and Height of window in grid
+int N = 40, M = 40;
 
 // Size of image in pixels
-int img_size = 16;
+float img_size = 24;
 
 // Width of board in pixels
-int width_board = img_size * N;
+float width_board = img_size * N;
 // Height of board in pixels
-int height_board = img_size * M;
+float height_board = img_size * M;
 
 // Width of UI space in pixels
-int width_UI = img_size * 10;
+float width_UI = img_size * 15;
 // Height of UI space in pixels
-int height_UI = height_board;
+float height_UI = height_board;
 
 
-DIRECTION direction = DIRECTION_RIGHT;
-int length = 4;
+DIRECTION direction;
+int length;
 
 struct Snake
 {
     int x, y;
-}
-
-// Snake data
-s[100];
-
+};
 
 struct Fruit
 {
     int x, y;
-}
-
-// Food object
-f;
+};
 
 void loadScreen();
-void start(RenderWindow&);
-void update();
+int start(RenderWindow&);
+void update(Snake*&, Fruit&);
 void gameOver();
+int show_credit(RenderWindow&);
 
-void draw();
-
-void update()
+void update(Snake*& s, Fruit& f)
 {
     // Update snake's body position
     for (int i = length; i > 0; --i)
     {
-        s[i].x = s[i - 1].x; s[i].y = s[i - 1].y;
+        s[i].x = s[i - 1].x;
+        s[i].y = s[i - 1].y;
     }
 
     // Update snake's head position
@@ -77,29 +70,44 @@ void update()
     // Check whether snake eat food
     if ((s[0].x == f.x) && (s[0].y == f.y))
     {
-        score++;
-        length++; f.x = rand() % N; f.y = rand() % M;
+        f.x = rand() % (N - 2) + 1; // Range is 1-> N-2
+        f.y = rand() % (M - 2) + 1; // Range is 1-> M-2
+
+        for (int i = 0; i < length; i++)
+        {
+            if (s[i].x == f.x && s[i].y == f.y)
+            {
+                f.x = rand() % (N - 2) + 1; // Range is 1-> N-2
+                f.y = rand() % (M - 2) + 1; // Range is 1-> M-2
+                i = 0;
+            }
+        }
+        score += 10;
+        length++;
+        foodeating = true;
     }
+    else { foodeating = false; }
 
     // Check whether snake's head has collision with border
-    if (s[0].x > N) // Hit right border
+    if (s[0].x >= N - 1) // Hit right border
     {
-        s[0].x = 0;
+        cout << "Hit right border\n";
         gameOver();
     }
-    if (s[0].x < 0) // Hit left border
+    if (s[0].x <= 0) // Hit left border
     {
-        s[0].x = N;
+        cout << "Hit left border\n";
         gameOver();
     }
-    if (s[0].y > M) // Hit top border
+    if (s[0].y >= M - 1) // Hit bottom border
     {
-        s[0].y = 0;
+        cout << "Hit bottom border\n";
         gameOver();
     }
-    if (s[0].y < 0) // Hit bottom border 
+    if (s[0].y <= 0) // Hit top border
     {
-        s[0].y = M;
+        //s[0].y = M-1;
+        cout << "Hit top border\n";
         gameOver();
     }
 
@@ -108,124 +116,364 @@ void update()
     {
         if (s[0].x == s[i].x && s[0].y == s[i].y)
         {
-            length = i;
+            //length = i;
+            cout << "Hit its-self\n";
             gameOver();
         }
     }
 }
 
-void start(RenderWindow& window)
+
+int start(RenderWindow& window)
 {
-    srand(time(0));
+    int op = 1;
+    int MAX = (N - 2) * (M - 2);
 
-    isPlaying = true;
+#pragma region Initialize
 
-    Texture t1, t2;
+    Snake* s = new Snake[MAX];
+    Fruit f;
+
+    Texture t1, t2, t3, t4, t_intruct, t_pause;
     t1.loadFromFile("images/white.png");
     t2.loadFromFile("images/red.png");
+    t3.loadFromFile("images/purble.jpg");
+    t4.loadFromFile("images/green_2.png");
+    t_intruct.loadFromFile("images/key.png");
+    t_pause.loadFromFile("images/esc.png");
 
-    Sprite sprite1(t1);
-    Sprite sprite2(t2);
+    Sprite sprite_white(t1);
+    Sprite sprite_red(t2);
+    Sprite sprite_purple(t3);
+    Sprite sprite_green(t4);
+
+    sprite_white.scale(1.5f, 1.5f);
+    sprite_red.scale(1.5f, 1.5f);
+    sprite_purple.scale(1.5f, 1.5f);
+    sprite_green.scale(1.5f, 1.5f);
 
     Font font_arcade;
     if (!font_arcade.loadFromFile("Fonts/ARCADECLASSIC.TTF"))
     {
         cout << "ERROR: Could not load font";
     }
+    Font font_manaspc;
+    if (!font_manaspc.loadFromFile("Fonts/manaspc.TTF"))
+    {
+        cout << "ERROR: Could not load font";
+    }
     Text txt_score;
     txt_score.setFont(font_arcade);
-    txt_score.setFillColor(Color::Red);
-    txt_score.setCharacterSize(32);
-    txt_score.setString("Score");
-    txt_score.setPosition(width_board + width_UI / 2 - txt_score.getLocalBounds().width / 2, height_UI / 2 - 32);
+    txt_score.setFillColor(Color::White);
+    txt_score.setCharacterSize(50);
+    txt_score.setString("Point");
+    txt_score.setPosition(width_board + width_UI / 2 - txt_score.getLocalBounds().width / 2, height_UI / 2 - 48);
 
+    Texture text_key;
+    text_key.loadFromFile("images/white.png");
+    Sprite sprite_key(text_key);
+    sprite_key.scale(1.5f, 1.5f);
+
+    
     Text txt;
-    txt.setFont(font_arcade);
-    txt.setFillColor(Color::Red);
-    txt.setCharacterSize(32);
-    txt.setPosition(txt_score.getPosition().x + txt_score.getLocalBounds().width / 2, txt_score.getPosition().y + txt_score.getGlobalBounds().height + 4);
+    txt.setFont(font_manaspc);
+    txt.setFillColor(Color::Magenta);
 
-    Clock clock;
-    float timer = 0, delay = 0.1;
+#pragma endregion
 
-    f.x = 10;
-    f.y = 10;
+    txt.setCharacterSize(23);
+    txt.setPosition(txt_score.getPosition().x + txt_score.getLocalBounds().width / 2 - 32, txt_score.getPosition().y + txt_score.getGlobalBounds().height + 35);
 
-    while (window.isOpen() && isPlaying)
+    while (op == 1)
     {
-        float time = clock.getElapsedTime().asSeconds();
-        clock.restart();
-        timer += time;
+        srand(time(0));
 
+        isAlive = true;
+
+        Clock clock;
+        Clock clock2;
+
+        float timer = 0, delay = 0.1;
+        float timer2 = 0, delay2 = 2;
+        score = 00;
+        length = 3;
+        for (int i = 0; i < length; i++)
+        {
+            s[i].x = 15;
+            s[i].y = 15;
+        }
+        timer = delay * 1.1;
+        f.x = 10;
+        f.y = 10;
+
+        int effect_count_down = 0;
+        int k = 0;
+        int ran = 0;
+
+        DIRECTION temp_d = DIRECTION::DIRECTION_RIGHT;
+        direction = temp_d;
+
+        while (window.isOpen() && isAlive)
+        {
+
+            float time = clock.getElapsedTime().asSeconds();
+            float time2 = clock2.getElapsedTime().asSeconds();
+            clock.restart();
+
+            timer += time;
+            timer2 += time2;
+            Event e;
+            while (window.pollEvent(e))
+            {
+                if (e.type == Event::Closed)
+                {
+                    window.close();
+                    return -1;
+                }
+            }
+
+#pragma region Get Input
+            if (Keyboard::isKeyPressed(Keyboard::Left)) temp_d = DIRECTION_LEFT;
+            else if (Keyboard::isKeyPressed(Keyboard::Right)) temp_d = DIRECTION_RIGHT;
+            else if (Keyboard::isKeyPressed(Keyboard::Up)) temp_d = DIRECTION_UP;
+            else if (Keyboard::isKeyPressed(Keyboard::Down)) temp_d = DIRECTION_DOWN;
+            
+#pragma endregion
+
+            if (timer > delay)
+            {
+                if (!((temp_d == DIRECTION_LEFT && direction == DIRECTION_RIGHT)
+                    || (temp_d == DIRECTION_RIGHT && direction == DIRECTION_LEFT)
+                    || (temp_d == DIRECTION_UP && direction == DIRECTION_DOWN)
+                    || (temp_d == DIRECTION_DOWN && direction == DIRECTION_UP)))
+                {
+                    direction = temp_d;
+                }
+
+                // Delay time has reached, reset timer
+                timer = 0;
+                // Update position of object 
+                update(s, f);
+
+#pragma region Draw
+
+                window.clear();
+
+                // Draw background
+                for (int i = 0; i < N; i++)
+                    for (int j = 0; j < M; j++)
+                    {
+                        sprite_white.setPosition(i * img_size, j * img_size);  window.draw(sprite_white);
+                    }
+                // Draw snake
+                for (int i = 0; i < length; i++)
+                {
+                    sprite_red.setPosition(s[i].x * img_size, s[i].y * img_size);  window.draw(sprite_red);
+                }
+
+                // Draw food
+                sprite_green.setPosition(f.x * img_size, f.y * img_size);  window.draw(sprite_green);
+
+                // Draw UI
+                txt.setString(std::to_string(score)); window.draw(txt); window.draw(txt_score);
+
+                
+                window.display();
+#pragma endregion
+            }
+            else
+            {
+                // Wait delay time
+
+            }
+
+        }
+        if (window.isOpen()) {
+            if (!isAlive)
+            {
+                // Player is died, ask if player want to try again
+            }
+            else
+            {
+                cout << " Not died yet but the start()'s loop has been break?\n";
+                delete[] s;
+                return 2;
+            }
+        }
+        else
+        {
+            delete[] s;
+            return -1;
+        }
+    }
+    delete[] s;
+    return 2;
+}
+
+void gameOver()
+{
+    cout << "Game Over\n";
+    isAlive = false;
+}
+
+int show_credit(RenderWindow& window)
+{
+    window.clear();
+
+    Font font;
+    if (!font.loadFromFile("Fonts/manaspc.ttf"))
+    {
+        cout << "ERROR: Could not load font";
+    }
+    Text txt;
+    txt.setFont(font);
+    txt.setFillColor(Color::Green);
+    txt.setCharacterSize(32);
+
+    txt.setPosition(50, 50);
+    txt.setString(">Esc<");
+    window.draw(txt);
+    txt.setString("This is exercise for class SS004.K22");
+    txt.setPosition(window.getSize().x / 2 - txt.getGlobalBounds().width / 2, height_board * 3 / 4 - txt.getGlobalBounds().height);
+    window.draw(txt);
+    txt.setString("~ VNUHCM ~ UIT ~");
+    txt.setPosition(window.getSize().x / 2 - txt.getGlobalBounds().width / 2, txt.getPosition().y + txt.getGlobalBounds().height + 15);
+    window.draw(txt);
+
+    txt.setFillColor(Color::Yellow);
+    txt.setString("Authors :\n ~ Nguyen Pham Duy Bang - Dragnell\n ~ Nguyen Trong Nhan - C0R3M3N\n ~ Vu Ngoc Thach - DragonPow");
+    txt.setPosition(100, height_board / 3 - txt.getGlobalBounds().height);
+    window.draw(txt);
+
+    window.display();
+    while (window.isOpen() && !(Keyboard::isKeyPressed(Keyboard::Escape)))
+    {
+        // Wait until user want to return
         Event e;
         while (window.pollEvent(e))
         {
             if (e.type == Event::Closed)
                 window.close();
         }
-
-#pragma region Get Input
-        if (Keyboard::isKeyPressed(Keyboard::Left) && direction != DIRECTION_RIGHT) direction = DIRECTION_LEFT;
-        if (Keyboard::isKeyPressed(Keyboard::Right) && direction != DIRECTION_LEFT) direction = DIRECTION_RIGHT;
-        if (Keyboard::isKeyPressed(Keyboard::Up) && direction != DIRECTION_DOWN) direction = DIRECTION_UP;
-        if (Keyboard::isKeyPressed(Keyboard::Down) && direction != DIRECTION_UP) direction = DIRECTION_DOWN;
-#pragma endregion
-
-        if (timer > delay)
-        {
-            // Delay time has reached, reset timer
-            timer = 0;
-            // Update position of object 
-            update();
-            // Check low fps
-            if (timer > delay + delay) cout << "Low fps\n";
-        }
-        else
-        {
-            // Wait delay time
-        }
-
-#pragma region Draw
-
-        window.clear();
-
-        // Draw background
-        for (int i = 0; i < N; i++)
-            for (int j = 0; j < M; j++)
-            {
-                sprite1.setPosition(i * img_size, j * img_size);  window.draw(sprite1);
-            }
-        // Draw snake
-        for (int i = 0; i < length; i++)
-        {
-            sprite2.setPosition(s[i].x * img_size, s[i].y * img_size);  window.draw(sprite2);
-        }
-        // Draw food
-        sprite2.setPosition(f.x * img_size, f.y * img_size);  window.draw(sprite2);
-        // Draw UI
-
-        txt.setString(std::to_string(score)); window.draw(txt); window.draw(txt_score);
-
-        window.display();
-#pragma endregion
-
     }
 
-    if (window.isOpen()) window.close();
-    isPlaying = false;
-}
-
-void gameOver()
-{
-    cout << "Game Over\n";
-    //isPlaying = false;
+    if (window.isOpen()) return 2;
+    else return -1;
 }
 
 void loadScreen()
 {
-    RenderWindow window(VideoMode(width_board + width_UI, height_board), "Snake Game!");
+    RenderWindow window(VideoMode(width_board + width_UI, height_board), "Snake Game!", Style::Titlebar | Style::Close);
+    window.setPosition(Vector2i(15, 15));
+    float width = width_board + width_UI;
+    int op = 2;
+    while (op > 0)
+    {
+        {
+            Font font;
 
-    start(window);
+            if (!font.loadFromFile("Fonts/ARCADECLASSIC.TTF"))
+            {
+                cout << "ERROR: Could not load font";
+            }
+            Text txt;
+            txt.setFont(font);
+
+            Font font2;
+            if (!font2.loadFromFile("Fonts/manaspc.ttf"))
+            {
+                cout << "ERROR: Could not load font";
+            }
+            Text txt2;
+            txt2.setFont(font2);
+            txt2.setFillColor(Color::White);
+            txt2.setString(">");
+            txt2.setCharacterSize(50);
+
+            bool isChanged = true;
+            while (window.isOpen())
+            {
+                if (Keyboard::isKeyPressed(Keyboard::Enter))
+                {
+                    break;
+                }
+                else if (Keyboard::isKeyPressed(Keyboard::Up))
+                {
+                    if (op < 2) op++;
+                    isChanged = true;
+                    //while (Keyboard::isKeyPressed(Keyboard::Up)) {}
+                }
+                else if (Keyboard::isKeyPressed(Keyboard::Down))
+                {
+                    if (op > 0) op--;
+                    isChanged = true;
+                    //while (Keyboard::isKeyPressed(Keyboard::Down)) {}
+                }
+
+                Event e;
+                while (window.pollEvent(e))
+                {
+                    if (e.type == Event::Closed)
+                        window.close();
+                }
+
+                if (isChanged)
+                {
+                    window.clear();
+
+                    txt.setFillColor(Color::Green);
+                    txt.setCharacterSize(72);
+                    txt.setString("Snake Game");
+                    txt.setPosition(width / 2 - txt.getGlobalBounds().width / 2, height_board / 3 - txt.getGlobalBounds().height / 2);
+                    window.draw(txt);
+
+                    float temp = txt.getPosition().y + txt.getGlobalBounds().height + 30;
+                    txt.setCharacterSize(50);
+                    txt.setFillColor(Color::Yellow);
+                    txt.setString("Start");
+                    txt.setPosition(width / 2 - txt.getGlobalBounds().width / 2, temp);
+                    window.draw(txt);
+
+                    if (op == 2)
+                    {
+                        txt2.setPosition(txt.getPosition().x - txt2.getGlobalBounds().width - 10, txt.getPosition().y);
+                        window.draw(txt2);
+                    }
+
+                    txt.setString("Credit");
+                    txt.setPosition(txt.getPosition().x, txt.getPosition().y + txt.getGlobalBounds().height + 15);
+                    window.draw(txt);
+
+                    if (op == 1)
+                    {
+                        txt2.setPosition(txt.getPosition().x - txt2.getGlobalBounds().width - 10, txt.getPosition().y);
+                        window.draw(txt2);
+                    }
+
+                    txt.setString("Quit");
+                    txt.setPosition(txt.getPosition().x, txt.getPosition().y + txt.getGlobalBounds().height + 15);
+                    window.draw(txt);
+
+                    if (op == 0)
+                    {
+                        txt2.setPosition(txt.getPosition().x - txt2.getGlobalBounds().width - 10, txt.getPosition().y);
+                        window.draw(txt2);
+                    }
+
+                    window.display();
+                    while (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Down))
+                    {
+                        // wait for key up
+                    }
+                    isChanged = false;
+                }
+
+            }
+        }
+
+        if (op == 2) op = start(window);
+        else if (op == 1) op = show_credit(window);
+    }
 }
 
 int main()
@@ -234,3 +482,5 @@ int main()
 
     return 0;
 }
+
+
