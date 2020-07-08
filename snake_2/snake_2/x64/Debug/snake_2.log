@@ -1,21 +1,21 @@
 ﻿  snake_2.cpp
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(213,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(220,37): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(229,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(287,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(287,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(287,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(288,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(288,67): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(290,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(291,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(291,67): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(293,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(293,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(295,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(297,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(297,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(297,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(439,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(439,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(189,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(196,37): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(205,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(263,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(263,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(263,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(264,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(264,67): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(266,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(267,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(267,67): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(269,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(269,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(271,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(273,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(273,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(273,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(373,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(373,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
   snake_2.vcxproj -> C:\Users\admin\Documents\GitHub\Snake_Excercise_SS004_K22\snake_2\x64\Debug\snake_2.exe
