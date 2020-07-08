@@ -260,11 +260,18 @@ int start(RenderWindow& window)
                 window.clear();
 
                 // Draw background
-                for (int i = 0; i < N; i++)
-                    for (int j = 0; j < M; j++)
-                    {
-                        sprite_white.setPosition(i * img_size, j * img_size);  window.draw(sprite_white);
-                    }
+				for (int x = width_board - img_size; x > -1; x -= img_size) { sprite_purple.setPosition(x, 0);  window.draw(sprite_purple); } // Draw top Border
+				for (int y = height_board - 2 * img_size; y > 0; y -= img_size)
+				{
+					sprite_purple.setPosition(0, y);  window.draw(sprite_purple); // Draw left Border
+					for (int x = width_board - 2 * img_size; x > 0; x -= img_size)
+					{
+						sprite_white.setPosition(x, y);  window.draw(sprite_white);
+					}
+					sprite_purple.setPosition(width_board - img_size, y);  window.draw(sprite_purple); // Draw right Border
+				}
+				for (int x = width_board - img_size; x > -1; x -= img_size) { sprite_purple.setPosition(x, height_board - img_size);  window.draw(sprite_purple); } // Draw bottom Border
+
                 // Draw snake
                 for (int i = 0; i < length; i++)
                 {
