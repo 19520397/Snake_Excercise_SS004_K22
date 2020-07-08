@@ -1,0 +1,82 @@
+﻿  Credit.cpp
+  GameManager.cpp
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\GameManager.cpp(17,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\GameManager.cpp(17,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  MainMenu.cpp
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\MainMenu.cpp(54,29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\MainMenu.cpp(73,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\MainMenu.cpp(102,49): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Screen_Classic.cpp
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(278,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(278,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(278,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(279,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(279,61): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(281,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(282,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(282,70): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(284,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(284,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(286,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(288,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(288,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(288,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(350,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(354,37): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Screen_Classic.cpp(365,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Selection.cpp
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Selection.cpp(21,29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Selection.cpp(78,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Selection.cpp(109,49): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Selection.cpp(112,98): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\Selection.cpp(145,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  snake_2.cpp
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(517,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(524,37): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(533,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(577,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(577,75): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(577,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(578,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(578,79): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(580,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(581,32): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(581,82): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(583,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(583,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(585,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(587,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(587,75): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(587,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(634,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(634,75): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(634,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(635,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(635,79): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(637,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(638,32): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(638,82): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(640,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(640,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(642,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(644,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(644,75): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(644,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(726,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(726,75): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(726,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(727,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(727,79): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(729,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(730,32): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(730,82): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(732,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(732,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(734,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(736,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(736,75): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(736,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(831,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\snake_2\snake_2.cpp(831,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  Generating Code...
+  snake_2.vcxproj -> D:\Study\KNNN\snake\Snake_Excercise_SS004_K22\Project_Folder\x64\Debug\snake_2.exe
