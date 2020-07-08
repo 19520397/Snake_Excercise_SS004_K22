@@ -52,6 +52,7 @@ void update(Snake*&, Fruit&);
 void gameOver();
 int show_credit(RenderWindow&);
 int checkPlayAgain(RenderWindow&);
+int checkResume(RenderWindow&);
 
 void update(Snake*& s, Fruit& f)
 {
@@ -123,7 +124,6 @@ void update(Snake*& s, Fruit& f)
         }
     }
 }
-
 
 int start(RenderWindow& window)
 {
@@ -238,7 +238,20 @@ int start(RenderWindow& window)
             else if (Keyboard::isKeyPressed(Keyboard::Right)) temp_d = DIRECTION_RIGHT;
             else if (Keyboard::isKeyPressed(Keyboard::Up)) temp_d = DIRECTION_UP;
             else if (Keyboard::isKeyPressed(Keyboard::Down)) temp_d = DIRECTION_DOWN;
-            
+            // Check pause keyboard
+            if (Keyboard::isKeyPressed(Keyboard::Escape))
+            {
+                while (Keyboard::isKeyPressed(Keyboard::Escape)) {/*Wait for key up*/ }
+
+                int sl = checkResume(window);
+                if (sl == 0) return -1; // Quit
+                else if (sl == 1)// main menu
+                {
+                    delete[] s;
+                    return 2;
+                }
+                else {} // Resume
+            }
 #pragma endregion
 
             if (timer > delay)
@@ -316,6 +329,136 @@ void gameOver()
 {
     cout << "Game Over\n";
     isAlive = false;
+}
+
+int checkResume(RenderWindow& window)
+{
+    int op = 2;
+
+#pragma region Initialize
+
+#pragma endregion
+
+    Texture t;
+    t.create(window.getSize().x, window.getSize().y);
+    t.update(window);
+    t.update(window);
+    Sprite last_state(t);
+    Font font;
+
+    if (!font.loadFromFile("Fonts/ARCADECLASSIC.TTF"))
+    {
+        cout << "ERROR: Could not load font";
+    }
+    Text txt;
+    txt.setFont(font);
+
+    Font font2;
+    if (!font2.loadFromFile("Fonts/manaspc.ttf"))
+    {
+        cout << "ERROR: Could not load font";
+    }
+    Text txt_selection;
+    txt_selection.setFont(font2);
+    txt_selection.setFillColor(Color::Black);
+    txt_selection.setString(">");
+    txt_selection.setCharacterSize(70);
+
+    bool isChanged = true;
+    while (window.isOpen())
+    {
+        if (Keyboard::isKeyPressed(Keyboard::Enter))
+        {
+            while (Keyboard::isKeyPressed(Keyboard::Enter)) {/*Wait to key up*/ }
+            break;
+        }
+        else if (Keyboard::isKeyPressed(Keyboard::Up))
+        {
+            if (op < 2) op++;
+            isChanged = true;
+        }
+        else if (Keyboard::isKeyPressed(Keyboard::Down))
+        {
+            if (op > 0) op--;
+            isChanged = true;
+        }
+
+        Event e;
+        while (window.pollEvent(e))
+        {
+            if (e.type == Event::Closed)
+                window.close();
+        }
+
+        if (isChanged)
+        {
+            window.clear();
+            window.draw(last_state);
+
+            txt.setFillColor(Color::Red);
+            txt.setCharacterSize(180);
+            txt.setString("Paused");
+            txt.setPosition((width_board) / 2 - txt.getGlobalBounds().width / 2, height_board / 3 - txt.getGlobalBounds().height / 2);
+            window.draw(txt);
+
+            float temp = txt.getPosition().y + txt.getGlobalBounds().height + 100;
+            txt.setCharacterSize(txt_selection.getCharacterSize());
+            txt.setFillColor(Color::Blue);
+            txt.setString("Resume");
+            txt.setPosition(txt.getPosition().x + 80, temp);
+            window.draw(txt);
+
+            if (op == 2)
+            {
+                txt_selection.setPosition(txt.getPosition().x - txt_selection.getGlobalBounds().width - 10, txt.getPosition().y);
+                window.draw(txt_selection);
+            }
+
+            txt.setString("Main Menu");
+            txt.setPosition(txt.getPosition().x, txt.getPosition().y + txt.getGlobalBounds().height + 15);
+            window.draw(txt);
+
+            if (op == 1)
+            {
+                txt_selection.setPosition(txt.getPosition().x - txt_selection.getGlobalBounds().width - 10, txt.getPosition().y);
+                window.draw(txt_selection);
+            }
+
+            txt.setString("Quit");
+            txt.setPosition(txt.getPosition().x, txt.getPosition().y + txt.getGlobalBounds().height + 15);
+            window.draw(txt);
+
+            if (op == 0)
+            {
+                txt_selection.setPosition(txt.getPosition().x - txt_selection.getGlobalBounds().width - 10, txt.getPosition().y);
+                window.draw(txt_selection);
+            }
+
+            window.display();
+            while (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Down))
+            {
+                // wait for key up
+            }
+            isChanged = false;
+        }
+
+    }
+
+    if (op == 2)
+    {
+        cout << "Resume\n";
+        return 2;
+    }
+    else if (op == 1)
+    {
+        cout << "Main Menu\n";
+        return 1;
+    }
+    else
+    {
+        cout << "Back\n";
+        return 0;
+    }
 }
 
 int checkPlayAgain(RenderWindow& window)
