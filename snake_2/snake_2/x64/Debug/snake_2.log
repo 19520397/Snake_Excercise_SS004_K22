@@ -1,7 +1,21 @@
 ﻿  snake_2.cpp
-D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(198,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(205,37): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(214,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(641,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(641,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(262,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(269,37): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(278,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(349,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(349,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(349,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(350,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(350,67): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(352,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(353,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(353,67): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(355,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(355,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(357,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(359,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(359,63): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(359,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(761,59): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\snake_2\snake_2.cpp(761,47): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
   snake_2.vcxproj -> D:\chuyên môn\code\github\Snake_Excercise_SS004_K22\snake_2\x64\Debug\snake_2.exe
