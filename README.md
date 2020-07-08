@@ -2,7 +2,7 @@
 
 Làm game Con rắn cho bài tập số 7 - Môn Kỹ năng nghề nghiệp - Lớp SS004.K22
 
-Thành viên: 
+Thành viên:
 
 - Nguyễn Phạm Duy Bằng - 19520397 - Dragnell (Tên trên dự án cũ)
 
@@ -16,7 +16,7 @@ Dự án game đã được thực hiện từ ngày 20/06/2020 tại : https://
 
 Nhưng vì một số lý do định danh để chấm điểm nên sẽ được re-make.
 
-Những bản commit đầu tiên chỉ để mô phỏng lại quá trình thực hiện từ trước.
+Những bản commit đầu tiên chỉ để mô phỏng lại quá trình thực hiện từ trước. Tuy nhiên vì lý do thời gian và khó để mô phỏng chính xác 100% nên đã lược bớt nhiều. Vui lòng truy cập vào dự án cũ để biết chính xác về lịch sử chi tiết của game.
 
 # Chuẩn (Standard)
 
@@ -26,7 +26,7 @@ Ngôn ngữ lập trình : C++ (Version C++14)
 
 Platforms : 64bit (x64)
 
-# Thư viện ngoài
+# Thư viện ngoài (Chúng tôi đã cài sẵn vào dự án, không cần cài thêm)
 
 Thư viện SFML (chúng tôi dùng bản Visual C++ 15 (x64)): https://www.sfml-dev.org/
 
@@ -36,7 +36,7 @@ Hướng dẫn khai báo thư viện SFML cho Visual Studio: https://www.youtube
 
 # Cam kết
 
-Toàn bộ code trên là nỗ lực của từng thành viên trong nhóm. 
+Toàn bộ code trên là nỗ lực của từng thành viên trong nhóm.
 
 Chúng tôi có tham khảo ý tưởng từ nhiều nguồn và sử dụng các hình ảnh trên internet.
 
