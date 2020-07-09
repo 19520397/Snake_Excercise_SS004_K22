@@ -73,6 +73,18 @@ void GameManager::start()
             else if (lv == 1)
             {
                 cout << "Start screen modern\n";
+                Screen_Modern* screen_modern = new Screen_Modern(&window, N, M, img_size, width_UI);
+                
+                if (screen_modern->start() == 1)
+                {
+                    delete screen_modern;
+                    if (!window.isOpen()) { cout << "Window has been closed\n"; break; }
+                    else
+                    {
+                        mainMenu.op = 3;
+                        continue;
+                    }
+                }
             }
             else if (lv == 2)
             {
