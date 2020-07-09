@@ -11,7 +11,7 @@ using std::cout;
 
 class Screen_Classic
 {
-private:
+protected:
 	enum class DIRECTION
 	{
 		DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_LEFT, DIRECTION_DOWN
@@ -43,6 +43,7 @@ private:
 	int score;
 	bool isAlive = false;
 	bool foodeating = false;
+	bool isKeychanged = false;
 
 	int effect_count_down_1; 
 	int effect_count_down_2;
@@ -75,7 +76,6 @@ private:
 	SoundBuffer* buffer;
 
 public:
-
 	Screen_Classic(RenderWindow* window, int n, int m, float img_size, float width_UI);
 	~Screen_Classic();
 	int getScore() { return score; }
@@ -85,9 +85,14 @@ public:
 	void draw_background();
 	void draw_snake();
 	void draw_food();
-	void draw_barrier();
 	void draw_UI();
 	void gameOver();
 	void update();
+
+	//belong to class Barrier
+	virtual void draw_barrier();
+	virtual void tranfer_barrier();
+	virtual bool check_barrier();
+	virtual void delete_barrier();
 };
 
