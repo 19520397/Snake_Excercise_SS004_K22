@@ -33,6 +33,9 @@
     <ClCompile Include="Credit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Selection_List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainMenu.h">
@@ -48,6 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Credit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Selection_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fonts_Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
