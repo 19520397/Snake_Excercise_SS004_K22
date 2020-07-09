@@ -1,7 +1,9 @@
 #pragma once
+
 class GameManager
 {
 public:
+
 	// Width and Height of window in grid
 	int N = 40, M = 40;
 

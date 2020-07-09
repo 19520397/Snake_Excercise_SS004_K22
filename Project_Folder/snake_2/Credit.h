@@ -28,8 +28,9 @@ public:
 
 	void load()
     {
-        window->clear();
+        cout << "Launch Credit\n";
 
+        window->clear();
         
         txt->setFillColor(sf::Color::Green);
         txt->setCharacterSize(32);

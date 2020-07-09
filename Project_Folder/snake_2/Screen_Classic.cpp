@@ -194,7 +194,7 @@ void Screen_Classic::update()
             {
                 f->x = rand() % (N - 2) + 1; // Range is 1-> N-2
                 f->y = rand() % (M - 2) + 1; // Range is 1-> M-2
-                i = 0;
+                i = -1;
             }
         }
         sound_eatfood->play();
@@ -336,9 +336,9 @@ void Screen_Classic::draw()
     window->clear();
 
     draw_background();
+    draw_food();
     draw_barrier();
     draw_effect();
-    draw_food();
     draw_snake();
     draw_UI();
     draw_Steps();
@@ -353,11 +353,19 @@ void Screen_Classic::gameOver()
     isAlive = false;
 }
 
-void Screen_Classic::start()
+int Screen_Classic::start()
 {
+    cout << "Start Screen Classic\n";
     int op = 1;
     Clock clock;
     Clock clock2;
+
+    sf::Font font_gomarice;
+    sf::Font font_invasion;
+
+    if (!font_gomarice.loadFromFile("Fonts/gomarice_game_continue_02.ttf")) std::cout << "Cannot load font gomarice_game_continue_02.ttf\n";
+    if (!font_invasion.loadFromFile("Fonts/INVASION2000.TTF")) std::cout << "Cannot load font INVASION2000.TTF\n";
+
     while (op)
     {
         srand(time(0));
@@ -397,7 +405,7 @@ void Screen_Classic::start()
                 if (e.type == Event::Closed)
                 {
                     window->close();
-                    return;
+                    return 0;
                 }
             }
 
@@ -417,24 +425,31 @@ void Screen_Classic::start()
                 temp_texture.create(window->getSize().x, window->getSize().y);
                 temp_texture.update(*window);
 
-                Selection selection(window, width_board, height, 0, 0, &temp_texture);
-                selection.setTitle_String("Pause");
+                Selection selection(window, width_board, height, 0.0f, 0.0f, &temp_texture);
+                selection.setTitle_String("Paused Game");
                 selection.setTitle_Color(Color::Red);
                 selection.setTitle_Size(150);
-                selection.setOptions_List(new vector<std::string>{ "Main Menu", "Resume" });
+                selection.setOptions_List(new vector<std::string>{ "MAIN MENU", "CHANGE LEVEL" , "CONTINUE" });
+                selection.setOption_Font(font_invasion);
                 selection.setOption_Color(Color::Blue);
-                selection.setOption_Size(72);
+                selection.setOption_Size(65);
+                selection.setCursor_Color(Color::Black);
 
                 selection.load();
 
                 if (selection.getOption() == 0)// Main menu
                 {
                     cout << "Back to Main Menu\n";
-                    return;
+                    return 0;
+                }
+                else if (selection.getOption() == 1) // Change Level
+                {
+                    return 1;
                 }
                 else  /* Resume*/
                 {
                     cout << "Resumed\n";
+                    timer = 1.1f * delay;
                 }
             }
 #pragma endregion
@@ -473,39 +488,59 @@ void Screen_Classic::start()
             if (!isAlive)
             {
                 // Player is died, ask if player want to try again
-                draw();
+				if (score>=10)
+				{
+					high_score_board::get_player_name(*window, width_board, height, score);
+				}
                 delete_barrier();
 
                 Texture temp_texture;
                 temp_texture.create(window->getSize().x, window->getSize().y);
                 temp_texture.update(*window);
 
-                Selection selection(window, width_board, height, 0, 0, &temp_texture);
+                Selection selection(window, width_board, height, 0.0f, 0.0f, &temp_texture);
                 selection.setTitle_String("Game Over");
                 selection.setTitle_Color(Color::Red);
                 selection.setTitle_Size(150);
-                selection.setOptions_List(new vector<std::string>{ "Main Menu", "Try Again" });
+                selection.setOptions_List(new vector<std::string>{ "MAIN MENU", "HIGH SCORE" , "CHANGE LEVEL", "TRY AGAIN" });
+                selection.setOption_Font(font_invasion);
                 selection.setOption_Color(Color::Blue);
-                selection.setOption_Size(72);
+                selection.setOption_Size(65);
+                selection.setCursor_Color(Color::Black);
 
                 selection.load();
 
                 op = selection.getOption();
-                if (op) cout << "Play again\n";
-                else cout << "Back to Main Menu\n";
+                if (op == 3) // Play again
+                {
+                    cout << "Play again\n";
+                }
+                else if (op == 2) // Change level
+                {
+                    return 1;
+                }
+                else if (op == 1) // High Score board
+                {
+                    cout << "Launch High Score board\n";
+                }
+                else
+                {
+                    cout << "Back to Main Menu\n";
+                    return 0;
+                }
             }
             else
             {
                 cout << " Not died yet but the start()'s loop has been break?\n";
-                return ;
+                return 0;
             }
         }
         else
         {
-            return ;
+            return 0;
         }
     }
-    return ;
+    return 0;
 }
 
 void Screen_Classic::draw_barrier() {

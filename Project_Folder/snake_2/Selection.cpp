@@ -11,11 +11,10 @@ Selection::Selection(RenderWindow* window, float width, float heigh, float top, 
     txt_selection = new Text();
     txt_option = new Text();
 
+    //font = new Font_Game();
+
     sound = new Sound();
     buffer = new SoundBuffer();
-
-    font_arcade = new Font();
-    font_manaspc = new Font();
 
     options = new vector<std::string>{ "Quit", "Credit", "Start" };
     op = options->size() - 1;
@@ -24,8 +23,10 @@ Selection::Selection(RenderWindow* window, float width, float heigh, float top, 
     sound->setBuffer(*buffer);
     sound->setVolume(30.f);
 
-    if (!font_arcade->loadFromFile("Fonts/ARCADECLASSIC.TTF")) { cout << "ERROR: Could not load font"; }
-    if (!font_manaspc->loadFromFile("Fonts/manaspc.ttf")) { cout << "ERROR: Could not load font"; }
+    font_arcade = new Font();
+    if (!font_arcade->loadFromFile("Fonts/ARCADECLASSIC.TTF")) std::cout << "Cannot load font ARCADECLASSIC.TTF\n";
+    font_manaspc = new Font();
+    if (!font_manaspc->loadFromFile("Fonts/manaspc.ttf")) std::cout << "Cannot load font manaspc.ttf\n";
 
     txt_title->setFont(*font_arcade);
     txt_title->setFillColor(Color::Green);
@@ -45,13 +46,13 @@ Selection::Selection(RenderWindow* window, float width, float heigh, float top, 
 
 Selection::~Selection()
 {
+    delete font_arcade;
+    delete font_manaspc;
     delete txt_option;
     delete txt_selection;
     delete txt_title;
     delete sound;
     delete buffer;
-    delete font_arcade;
-    delete font_manaspc;
     delete options;
 }
 
@@ -78,7 +79,7 @@ int Selection::load()
             else op = options->size() - 1;
             isChanged = true;
         }
-
+        
         sf::Event e;
         while (window->pollEvent(e))
         {
@@ -97,27 +98,9 @@ int Selection::load()
             window->draw(*txt_title);
 
             txt_option->setString(options->at(options->size() - 1));
-            txt_option->setPosition(txt_title->getPosition().x + txt_title->getGlobalBounds().width * 0.2f, txt_title->getPosition().y + txt_title->getGlobalBounds().height * 1.5f);
-            window->draw(*txt_option);
-
-            if (op == options->size() - 1)
-            {
-                txt_selection->setPosition(txt_option->getPosition().x - txt_selection->getGlobalBounds().width, txt_option->getPosition().y);
-                window->draw(*txt_selection);
-            }
-
-            for (int i = options->size() - 2; i > -1; i--)
-            {
-                txt_option->setString(options->at(i)); // Here are some magic
-                txt_option->setPosition(txt_option->getPosition().x, txt_option->getPosition().y + txt_option->getGlobalBounds().height * 1.3);
-                window->draw(*txt_option);
-
-                if (op == i)
-                {
-                    txt_selection->setPosition(txt_option->getPosition().x - txt_selection->getGlobalBounds().width, txt_option->getPosition().y);
-                    window->draw(*txt_selection);
-                }
-            }
+            txt_option->setPosition(txt_title->getPosition().x + txt_title->getGlobalBounds().width * 0.2f, txt_title->getPosition().y + (txt_title->getGlobalBounds().height * 1.6f));
+            
+            Selection_List::draw_on_vertical(window, options, txt_option, txt_selection, op);
 
             window->display();
             while (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Down))
@@ -131,7 +114,7 @@ int Selection::load()
 
     if (window->isOpen())
     {
-        return op - 1;
+        return op;
     }
     else return 0;
 }
@@ -154,5 +137,11 @@ void Selection::setTitle_String(sf::String str)
 void Selection::setTitle_Size(int size) 
 { 
     txt_title->setCharacterSize(size); 
+    txt_title->setPosition(left + width / 2 - txt_title->getGlobalBounds().width / 2, top + height / 3 - txt_title->getGlobalBounds().height / 2);
+}
+
+void Selection::setTitle_Font(Font& font)
+{
+    txt_title->setFont(font);
     txt_title->setPosition(left + width / 2 - txt_title->getGlobalBounds().width / 2, top + height / 3 - txt_title->getGlobalBounds().height / 2);
 }
