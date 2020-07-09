@@ -3,6 +3,7 @@
 #include <time.h>
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace sf;
 using std::cin;
 using std::cout;
@@ -54,6 +55,48 @@ void gameOver();
 int show_credit(RenderWindow&);
 int checkPlayAgain(RenderWindow&);
 int checkResume(RenderWindow&);
+
+struct POINT {
+    int x, y;
+};
+
+std::vector<POINT> barrier;
+
+//if steps_remaining == 0
+void tranfer_barrier(std::vector<POINT>& barrier, Fruit f, Snake snake) {
+    //tranfer form food to barrier
+    POINT coor;
+    coor.x = f.x;
+    coor.y = f.y;
+    barrier.push_back(coor);
+    //create new food
+    f.x = rand() % (N - 2) + 1;
+    f.y = rand() % (M - 2) + 1;
+    for (int i = 0; i < length; i++) {
+        if (f.x == snake.x && f.y == snake.y) {
+            f.x = rand() % (N - 2) + 1;
+            f.y = rand() % (M - 2) + 1;
+            i = -1;
+        }
+    }
+}
+
+void draw_barrier(std::vector<POINT>& barrier, RenderWindow& window) {
+    Texture texture_barrier;
+    if (!texture_barrier.loadFromFile("images/purble.jpg")) {
+        cout << "Not load from file images/purble.jbg";
+    }
+
+    Sprite sprite_barrier(texture_barrier);
+    sprite_barrier.scale(1.5f,1.5f);
+
+    int size_barrier = barrier.size();
+
+    for (int i = 0; i < size_barrier; i++) {
+        sprite_barrier.setPosition(barrier[i].x*img_size,barrier[i].y*img_size);
+        window.draw(sprite_barrier);
+    }
+}
 
 void update(Snake*& s, Fruit& f, Sound& sound)
 {
