@@ -560,5 +560,5 @@ void Screen_Classic::delete_barrier() {
 }
 
 void Screen_Classic::draw_Steps() {
-
+    return;
 }

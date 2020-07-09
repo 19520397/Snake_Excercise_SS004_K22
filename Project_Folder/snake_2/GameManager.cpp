@@ -78,7 +78,9 @@ void GameManager::start()
                 if (screen_modern->start() == 1)
                 {
                     delete screen_modern;
-                    if (!window.isOpen()) { cout << "Window has been closed\n"; break; }
+                    if (!window.isOpen()) { 
+                        cout << "Window has been closed\n"; break; 
+                    }
                     else
                     {
                         mainMenu.op = 3;
@@ -88,11 +90,14 @@ void GameManager::start()
             }
             else if (lv == 2)
             {
-                Screen_Classic screen_classic(&window, N, M, img_size, width_UI);
+                Screen_Classic* screen_classic = new Screen_Classic(&window, N, M, img_size, width_UI);
 
-                if (screen_classic.start() == 1)
+                if (screen_classic->start() == 1)
                 {
-                    if (!window.isOpen()) { cout << "Window has been closed\n"; break; }
+                    delete screen_classic;
+                    if (!window.isOpen()) { 
+                        cout << "Window has been closed\n"; break; 
+                    }
                     else
                     {
                         mainMenu.op = 3;
