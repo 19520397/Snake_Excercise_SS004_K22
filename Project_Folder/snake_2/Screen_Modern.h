@@ -12,6 +12,8 @@ private:
     int steps_remaining;
     Texture* texture_barrier = NULL;
     Sprite* sprite_barrier = NULL;
+    Text* txt_steps = NULL;
+    Text* text_steps = NULL;
 public:
     Screen_Modern(RenderWindow* window, int n, int m, float img_size, float width_UI);
     ~Screen_Modern();
@@ -20,4 +22,5 @@ public:
     bool check_barrier();
     void reset_step();
     void delete_barrier();
+    void draw_Steps();
 };
