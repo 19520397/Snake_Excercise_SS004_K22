@@ -79,7 +79,7 @@ int Selection::load()
             else op = options->size() - 1;
             isChanged = true;
         }
-
+        
         sf::Event e;
         while (window->pollEvent(e))
         {

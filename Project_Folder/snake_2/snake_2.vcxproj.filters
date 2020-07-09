@@ -34,6 +34,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Selection_List.cpp">
+    <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen_Modern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fonts_Game.h">
+    <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen_Modern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

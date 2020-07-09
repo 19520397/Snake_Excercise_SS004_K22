@@ -151,8 +151,10 @@
   <ItemGroup>
     <ClCompile Include="Credit.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="high_score_board.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Screen_Classic.cpp" />
+    <ClCompile Include="Screen_Modern.cpp" />
     <ClCompile Include="Selection.cpp" />
     <ClCompile Include="Selection_List.cpp" />
     <ClCompile Include="snake_2.cpp" />
@@ -161,8 +163,10 @@
     <ClInclude Include="Credit.h" />
     <ClInclude Include="Fonts_Game.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="high_score_board.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Screen_Classic.h" />
+    <ClInclude Include="Screen_Modern.h" />
     <ClInclude Include="Selection.h" />
     <ClInclude Include="Selection_List.h" />
   </ItemGroup>
