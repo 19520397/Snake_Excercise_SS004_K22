@@ -179,6 +179,9 @@ void Screen_Classic::update()
     else if (direction == DIRECTION::DIRECTION_RIGHT) s[0].x += 1;
     else if (direction == DIRECTION::DIRECTION_DOWN) s[0].y += 1;
 
+    // Check whether steps remaining = 0
+    tranfer_barrier();
+
     // Check whether snake eat food
     if ((s[0].x == f->x) && (s[0].y == f->y))
     {
@@ -234,6 +237,13 @@ void Screen_Classic::update()
             gameOver();
         }
     }
+
+    // Check whether snake's head has collision with border
+    if (check_barrier()) {
+        cout << "Hit barrier\n";
+        gameOver();
+    }
+
 }
 
 void Screen_Classic::draw_effect()
@@ -433,6 +443,7 @@ void Screen_Classic::start()
                     || (temp_d == DIRECTION::DIRECTION_UP && direction == DIRECTION::DIRECTION_DOWN)
                     || (temp_d == DIRECTION::DIRECTION_DOWN && direction == DIRECTION::DIRECTION_UP)))
                 {
+                    if (direction != temp_d) isKeychanged = true;
                     direction = temp_d;
                 }
 
@@ -440,6 +451,7 @@ void Screen_Classic::start()
                 timer = 0;
                 // Update position of object 
                 update();
+                isKeychanged = false;
                 if (foodeating)
                 {
                     effect_count_down_1 = 7;
@@ -464,6 +476,7 @@ void Screen_Classic::start()
 				}
 				draw();
                 draw();
+                delete_barrier();
 
                 Texture temp_texture;
                 temp_texture.create(window->getSize().x, window->getSize().y);
@@ -497,4 +510,18 @@ void Screen_Classic::start()
     return ;
 }
 
-void Screen_Classic::draw_barrier() {}
+void Screen_Classic::draw_barrier() {
+    return;
+}
+
+void Screen_Classic::tranfer_barrier() {
+    return;
+}
+
+bool Screen_Classic::check_barrier() {
+    return false;
+}
+
+void Screen_Classic::delete_barrier() {
+    return;
+}

@@ -6,6 +6,7 @@
 #include "Selection.h"
 #include "Screen_Classic.h"
 #include "Credit.h"
+#include "Screen_Modern.h"
 
 using namespace sf;
 
@@ -48,9 +49,15 @@ void GameManager::start()
         {
             cout << "Launch Screen Classic\n";
 
-            Screen_Classic screen_classic(&window, N, M, img_size, width_UI);
+            Screen_Classic* screen_game = new Screen_Classic(&window, N, M, img_size, width_UI);
+            screen_game->start();
+        }
+        else if (mainMenu.getOption() == 4) 
+        {
+            cout << "Launch Screen Modern\n";
 
-            screen_classic.start();
+            Screen_Modern* screen_game = new Screen_Modern(&window, N, M, img_size, width_UI);
+            screen_game->start();
         }
         else cout << "ERROR: Out of range\n";
         if (!window.isOpen())

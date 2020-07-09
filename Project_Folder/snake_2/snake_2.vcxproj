@@ -154,6 +154,7 @@
     <ClCompile Include="high_score_board.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Screen_Classic.cpp" />
+    <ClCompile Include="Screen_Modern.cpp" />
     <ClCompile Include="Selection.cpp" />
     <ClCompile Include="snake_2.cpp" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="high_score_board.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Screen_Classic.h" />
+    <ClInclude Include="Screen_Modern.h" />
     <ClInclude Include="Selection.h" />
   </ItemGroup>
   <ItemGroup>

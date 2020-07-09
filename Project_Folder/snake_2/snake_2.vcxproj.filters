@@ -33,7 +33,7 @@
     <ClCompile Include="Credit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="high_score_board.cpp">
+    <ClCompile Include="Screen_Modern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClInclude Include="Credit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="high_score_board.h">
+    <ClInclude Include="Screen_Modern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
