@@ -27,6 +27,8 @@ void GameManager::start()
     mainMenu.setOption_Size(80);
     mainMenu.load();
 
+    Screen_Classic* screen_game = NULL;
+
     while (mainMenu.getOption() != 0)
     {
         if (mainMenu.getOption() == 1)
@@ -41,23 +43,25 @@ void GameManager::start()
         {
             cout << "Launch High Score Board\n";
         }
-        else if (mainMenu.getOption() == 3)
+        else if (mainMenu.getOption() == 4)
         {
             cout << "Launch Screen Classic\n";
 
-            Screen_Classic* screen_game = new Screen_Classic(&window, N, M, img_size, width_UI);
+            screen_game = new Screen_Classic(&window, N, M, img_size, width_UI);
             screen_game->start();
         }
-        else if (mainMenu.getOption() == 4) 
+        else if (mainMenu.getOption() == 3) 
         {
             cout << "Launch Screen Modern\n";
 
-            Screen_Modern* screen_game = new Screen_Modern(&window, N, M, img_size, width_UI);
+            screen_game = new Screen_Modern(&window, N, M, img_size, width_UI);
             screen_game->start();
         }
         else cout << "ERROR: Out of range\n";
         if (!window.isOpen())
         {
+            delete screen_game;
+            screen_game = NULL;
             cout << "Closed window\n";
             break;
         }

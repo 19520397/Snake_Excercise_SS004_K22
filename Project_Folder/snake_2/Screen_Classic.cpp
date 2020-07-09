@@ -317,7 +317,9 @@ void Screen_Classic::draw_food()
 void Screen_Classic::draw_UI()
 {
     // Draw UI
-    txt->setString(std::to_string(score)); window->draw(*txt); window->draw(*txt_score);
+    txt->setString(std::to_string(score)); window->draw(*txt); 
+    window->draw(*txt_score);
+
     window->draw(*intruct1);
     window->draw(*intruct2);
     window->draw(*intruct3);
@@ -339,6 +341,7 @@ void Screen_Classic::draw()
     draw_food();
     draw_snake();
     draw_UI();
+    draw_Steps();
 
     window->display();
 #pragma endregion
@@ -519,4 +522,8 @@ bool Screen_Classic::check_barrier() {
 
 void Screen_Classic::delete_barrier() {
     return;
+}
+
+void Screen_Classic::draw_Steps() {
+
 }

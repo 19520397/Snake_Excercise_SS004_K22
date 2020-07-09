@@ -94,5 +94,6 @@ public:
 	virtual void tranfer_barrier();
 	virtual bool check_barrier();
 	virtual void delete_barrier();
+	virtual void draw_Steps();
 };
 
