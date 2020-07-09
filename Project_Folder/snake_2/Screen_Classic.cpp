@@ -334,9 +334,9 @@ void Screen_Classic::draw()
     window->clear();
 
     draw_background();
+    draw_food();
     draw_barrier();
     draw_effect();
-    draw_food();
     draw_snake();
     draw_UI();
 
@@ -474,8 +474,6 @@ void Screen_Classic::start()
 				{
 					high_score_board::get_player_name(*window, width_board, height, score);
 				}
-				draw();
-                draw();
                 delete_barrier();
 
                 Texture temp_texture;
