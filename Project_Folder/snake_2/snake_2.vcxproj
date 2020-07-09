@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="Credit.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="high_score_board.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Screen_Classic.cpp" />
     <ClCompile Include="Selection.cpp" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="Credit.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="high_score_board.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Screen_Classic.h" />
     <ClInclude Include="Selection.h" />
