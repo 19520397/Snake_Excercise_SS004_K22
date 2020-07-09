@@ -6,6 +6,7 @@
 #include <string>
 #include "Selection.h"
 #include "high_score_board.h"
+
 using namespace sf;
 using std::cin;
 using std::cout;
@@ -80,7 +81,7 @@ public:
 	Screen_Classic(RenderWindow* window, int n, int m, float img_size, float width_UI);
 	~Screen_Classic();
 	int getScore() { return score; }
-	void start();
+	int start();
 	void draw();
 	void draw_effect();
 	void draw_background();
