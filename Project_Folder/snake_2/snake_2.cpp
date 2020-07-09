@@ -947,11 +947,11 @@ void loadScreen()
     }
 }
 
-int main()
+/*int main()
 {
     loadScreen();
 
     return 0;
-}
+}*/
 
 

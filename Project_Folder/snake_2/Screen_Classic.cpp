@@ -400,32 +400,28 @@ void Screen_Classic::start()
                 cout << "Pressed Pause\n";
                 draw();
 
-                Texture* temp_texture = new Texture();
-                temp_texture->create(window->getSize().x, window->getSize().y);
-                temp_texture->update(*window);
+                Texture temp_texture;
+                temp_texture.create(window->getSize().x, window->getSize().y);
+                temp_texture.update(*window);
 
-                Selection* mainMenu = new Selection(window, width_board, height, 0, 0, temp_texture);
-                mainMenu->setTitle_String("Pause");
-                mainMenu->setTitle_Color(Color::Red);
-                mainMenu->setTitle_Size(150);
-                mainMenu->setOptions_List(new vector<std::string>{ "Main Menu", "Resume" });
-                mainMenu->setOption_Color(Color::Blue);
-                mainMenu->setOption_Size(72);
+                Selection selection(window, width_board, height, 0, 0, &temp_texture);
+                selection.setTitle_String("Pause");
+                selection.setTitle_Color(Color::Red);
+                selection.setTitle_Size(150);
+                selection.setOptions_List(new vector<std::string>{ "Main Menu", "Resume" });
+                selection.setOption_Color(Color::Blue);
+                selection.setOption_Size(72);
 
-                mainMenu->load();
+                selection.load();
 
-                if (mainMenu->getOption() == 0)// Main menu
+                if (selection.getOption() == 0)// Main menu
                 {
-                    delete temp_texture;
-                    delete mainMenu;
                     cout << "Back to Main Menu\n";
                     return;
                 }
-                else // Resume
+                else  /* Resume*/
                 {
-                    delete temp_texture;
-                    delete mainMenu;
-                    cout << "Resume\n";
+                    cout << "Resumed\n";
                 }
             }
 #pragma endregion
@@ -464,24 +460,23 @@ void Screen_Classic::start()
                 // Player is died, ask if player want to try again
                 draw();
 
-                Texture* temp_texture = new Texture();
-                temp_texture->create(window->getSize().x, window->getSize().y);
-                temp_texture->update(*window);
+                Texture temp_texture;
+                temp_texture.create(window->getSize().x, window->getSize().y);
+                temp_texture.update(*window);
 
-                Selection* mainMenu = new Selection(window, width_board, height, 0, 0, temp_texture);
-                mainMenu->setTitle_String("Game Over");
-                mainMenu->setTitle_Color(Color::Red);
-                mainMenu->setTitle_Size(150);
-                mainMenu->setOptions_List(new vector<std::string>{ "Main Menu", "Try Again" });
-                mainMenu->setOption_Color(Color::Blue);
-                mainMenu->setOption_Size(72);
+                Selection selection(window, width_board, height, 0, 0, &temp_texture);
+                selection.setTitle_String("Game Over");
+                selection.setTitle_Color(Color::Red);
+                selection.setTitle_Size(150);
+                selection.setOptions_List(new vector<std::string>{ "Main Menu", "Try Again" });
+                selection.setOption_Color(Color::Blue);
+                selection.setOption_Size(72);
 
-                mainMenu->load();
+                selection.load();
 
-                op = mainMenu->getOption();
-                delete temp_texture;
-                delete mainMenu;
+                op = selection.getOption();
                 if (op) cout << "Play again\n";
+                else cout << "Back to Main Menu\n";
             }
             else
             {
