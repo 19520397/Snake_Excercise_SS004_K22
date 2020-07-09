@@ -40,6 +40,10 @@ void GameManager::start()
         else if (mainMenu.getOption() == 2)
         {
             cout << "Launch High Score Board\n";
+
+			high_score_board high(&window, width_board + width_UI, height_board);
+
+			high.load();
         }
         else if (mainMenu.getOption() == 3)
         {

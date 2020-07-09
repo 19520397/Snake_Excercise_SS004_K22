@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "Selection.h"
+#include "high_score_board.h"
 using namespace sf;
 using std::cin;
 using std::cout;

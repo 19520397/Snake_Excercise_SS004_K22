@@ -470,6 +470,11 @@ void Screen_Classic::start()
             if (!isAlive)
             {
                 // Player is died, ask if player want to try again
+				if (score>=10)
+				{
+					high_score_board::get_player_name(*window, width_board, height, score);
+				}
+				draw();
                 draw();
                 delete_barrier();
 
