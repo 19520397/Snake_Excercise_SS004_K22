@@ -77,10 +77,15 @@ protected:
 	Sound* sound_eatfood;
 	SoundBuffer* buffer;
 
+	const std::string path_tip = "images/tip_classic.png";
+
 public:
+	
 	Screen_Classic(RenderWindow* window, int n, int m, float img_size, float width_UI);
 	~Screen_Classic();
 	int getScore() { return score; }
+	virtual const std::string getPath_Tip() { return path_tip; }
+	void print_Tips();
 	int start();
 	void draw();
 	void draw_effect();

@@ -80,7 +80,7 @@ void GameManager::start()
             {
                 cout << "Start screen modern\n";
                 Screen_Modern* screen_modern = new Screen_Modern(&window, N, M, img_size, width_UI);
-                
+                screen_modern->print_Tips();
                 if (screen_modern->start() == 1)
                 {
                     delete screen_modern;
@@ -93,11 +93,12 @@ void GameManager::start()
                         continue;
                     }
                 }
+                delete screen_modern;
             }
             else if (lv == 2)
             {
                 Screen_Classic* screen_classic = new Screen_Classic(&window, N, M, img_size, width_UI);
-
+                screen_classic->print_Tips();
                 if (screen_classic->start() == 1)
                 {
                     delete screen_classic;
@@ -106,10 +107,12 @@ void GameManager::start()
                     }
                     else
                     {
+
                         mainMenu.op = 3;
                         continue;
                     }
                 }
+                delete screen_classic;
             }
             else cout << "ERROR: Out of range\n";
         }

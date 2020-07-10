@@ -576,3 +576,52 @@ void Screen_Classic::delete_barrier() {
 void Screen_Classic::draw_Steps() {
     return;
 }
+
+void Screen_Classic::print_Tips()
+{    
+    Texture* t = new Texture();
+    t->loadFromFile(getPath_Tip());
+
+    Sprite* sprite_tip = new Sprite(*t);
+    sprite_tip->setPosition(width_board / 2 - sprite_tip->getGlobalBounds().width / 2, height / 2 - sprite_tip->getLocalBounds().height / 2);
+
+    Text* txt_ok = new Text();
+    txt_ok->setFont(*font_manaspc);
+    txt_ok->setString("> Okay");
+
+    txt_ok->setFillColor(Color::Black);
+    txt_ok->setOutlineColor(Color::Red);
+    txt_ok->setOutlineThickness(3.0f);
+    txt_ok->setCharacterSize(72);
+    txt_ok->setPosition(width_board / 2 - txt_ok->getGlobalBounds().width / 2, sprite_tip->getPosition().y + sprite_tip->getGlobalBounds().height + 20);
+
+    window->clear();
+
+    draw_background();
+    draw_UI();
+    window->draw(*sprite_tip);
+    window->draw(*txt_ok);
+
+    window->display();
+
+    while (window->isOpen())
+    {
+        Event e;
+        while (window->pollEvent(e))
+        {
+            if (e.type == Event::Closed)
+            {
+                window->close();
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Enter))
+        {
+            while (Keyboard::isKeyPressed(Keyboard::Enter)) { /*Wait for key up*/ }
+            break;
+        }
+    }
+
+    delete t;
+    delete sprite_tip;
+    delete txt_ok;
+}

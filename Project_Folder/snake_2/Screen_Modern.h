@@ -14,13 +14,18 @@ private:
     Sprite* sprite_barrier = NULL;
     Text* txt_steps = NULL;
     Text* text_steps = NULL;
+
+    const std::string path_tip = "images/tip_modern.png";
+    
 public:
     Screen_Modern(RenderWindow* window, int n, int m, float img_size, float width_UI);
     ~Screen_Modern();
+    const std::string getPath_Tip() { return path_tip; }
     void draw_barrier();
     void tranfer_barrier();
     bool check_barrier();
     void reset_step();
     void delete_barrier();
     void draw_Steps();
+    
 };

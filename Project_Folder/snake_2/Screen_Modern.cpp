@@ -23,7 +23,9 @@ Screen_Modern::Screen_Modern(RenderWindow* window, int n, int m, float img_size,
     txt_steps->setPosition(text_steps->getPosition().x + text_steps->getLocalBounds().width + 10, text_steps->getPosition().y + 5);
 }
 Screen_Modern::~Screen_Modern() {
-    Screen_Classic::~Screen_Classic();
+    //Screen_Classic::~Screen_Classic();
+    delete txt_steps;
+    delete text_steps;
     delete texture_barrier;
     delete sprite_barrier;
 }
@@ -32,10 +34,10 @@ void Screen_Modern::tranfer_barrier() {
     if (steps_remaining == -1) {
 
         //tranfer form food to barrier
-        Fruit* coor = new Fruit;
-        coor->x = f->x;
-        coor->y = f->y;
-        barrier.push_back(*coor);
+        Fruit coor;
+        coor.x = f->x;
+        coor.y = f->y;
+        barrier.push_back(coor);
 
         //create new food
         f->x = rand() % (N - 2) + 1;
