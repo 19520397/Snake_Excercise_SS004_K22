@@ -11,12 +11,10 @@ Selection::Selection(RenderWindow* window, float width, float heigh, float top, 
     txt_selection = new Text();
     txt_option = new Text();
 
-    //font = new Font_Game();
-
     sound = new Sound();
     buffer = new SoundBuffer();
 
-    options = new vector<std::string>{ "Quit", "Credit", "Start" };
+    options = new vector<std::string>{ "Option A", "Option B", "Option C" };
     op = options->size() - 1;
 
     buffer->loadFromFile("audio/beforegame.ogg");
@@ -31,7 +29,7 @@ Selection::Selection(RenderWindow* window, float width, float heigh, float top, 
     txt_title->setFont(*font_arcade);
     txt_title->setFillColor(Color::Green);
     txt_title->setCharacterSize(72);
-    txt_title->setString("Snake Game");
+    txt_title->setString("Selection");
     txt_title->setPosition( left + width / 2 - txt_title->getGlobalBounds().width / 2, top + height / 3 - txt_title->getGlobalBounds().height / 2);
 
     txt_option->setFont(*font_arcade);
@@ -59,6 +57,16 @@ Selection::~Selection()
 int Selection::load()
 {
     bool isChanged = true;
+
+    /*float back_ground_padding = 20;
+    float back_ground_height = txt_title->getGlobalBounds().height;
+    float back_ground_width = txt_title->getGlobalBounds().width;
+
+    sf::RectangleShape* back_ground = new sf::RectangleShape(sf::Vector2f(back_ground_width, back_ground_height));
+    back_ground->setPosition(txt_title->getPosition().x, txt_title->getPosition().y );
+    back_ground->setFillColor(Color::Black);
+    back_ground->setOutlineColor(Color::Green);
+    back_ground->setOutlineThickness(2.0f);*/
 
     while (window->isOpen())
     {
@@ -94,6 +102,7 @@ int Selection::load()
             sound->play();
 
             if (sprite_backGround != NULL) window->draw(*sprite_backGround);
+            //window->draw(*back_ground);
 
             window->draw(*txt_title);
 

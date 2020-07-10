@@ -59,13 +59,16 @@ public:
     void setOption_Size(int size) { txt_option->setCharacterSize(size); txt_selection->setCharacterSize(size); };
     void setOption_Color(sf::Color color) { txt_option->setFillColor(color); }
     void setOption_Font(Font& font) { txt_option->setFont(font); }
+    void setOption_OutLine(Color color, float thickness) { txt_option->setOutlineColor(color); txt_option->setOutlineThickness(thickness); }
 
     void setTitle_String(sf::String str);
     void setTitle_Size(int size);
     void setTitle_Color(sf::Color color) { txt_title->setFillColor(color); }
     void setTitle_Font(Font& font);
+    void setTitle_Outline(Color color, float thickness) { txt_title->setOutlineColor(color); txt_title->setOutlineThickness(thickness); }
 
     void setCursor_Color(sf::Color color) { txt_selection->setFillColor(color); }
     void setCursor_Font(Font& font) { txt_selection->setFont(font); }
+    void setCursor_Outline(Color color, float thickness) { txt_selection->setOutlineColor(color); txt_selection->setOutlineThickness(thickness); }
 };
 

@@ -29,10 +29,13 @@ void GameManager::start()
     mainMenu.setTitle_Font(font_gomarice);
     mainMenu.setTitle_Color(Color::Green);
     mainMenu.setTitle_Size(120);
+    mainMenu.setTitle_Outline(Color::Red, 2.0f);
     mainMenu.setOptions_List(new vector<std::string>{"Quit", "Credit", "High Score", "Start"});
     mainMenu.setOption_Font(font_arcade);
-    mainMenu.setOption_Color(Color::Yellow);
+    mainMenu.setOption_Color(Color::Blue);
     mainMenu.setOption_Size(80);
+    mainMenu.setOption_OutLine(Color::Yellow, 2.0f);
+    mainMenu.setCursor_Outline(Color::Red, 3.0f);
     mainMenu.load();
 
     Selection chooseLevel(&window, width_board + width_UI, height_board);
@@ -40,10 +43,13 @@ void GameManager::start()
     chooseLevel.setTitle_Font(font_gomarice);
     chooseLevel.setTitle_Color(Color::White);
     chooseLevel.setTitle_Size(100);
+    chooseLevel.setTitle_Outline(Color::Red, 2.0f);
     chooseLevel.setOptions_List(new vector<std::string>{ "Challenge", "Modern", "Classic" });
     chooseLevel.setOption_Font(font_arcade);
     chooseLevel.setOption_Color(Color::White);
     chooseLevel.setOption_Size(72);
+    chooseLevel.setOption_OutLine(Color::Red, 2.0f);
+    chooseLevel.setCursor_Outline(Color::Red, 3.0f);
 
     while (mainMenu.getOption() != 0)
     {

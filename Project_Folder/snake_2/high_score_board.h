@@ -87,6 +87,12 @@ public:
 
 			while (window.pollEvent(e))
 			{
+				if (e.type == sf::Event::Closed)
+				{
+					window.close();
+					break;
+				}
+
 				if (e.text.unicode != sf::Keyboard::BackSpace)
 				{
 					if (e.type == sf::Event::TextEntered)
@@ -256,7 +262,8 @@ public:
 					window->close();
 			}
 		}
-		cout << "Back to Main Menu\n";
+		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {}
+		cout << "Back from High Score Board\n";
 		return;
 	}
 

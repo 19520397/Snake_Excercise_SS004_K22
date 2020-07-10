@@ -2,8 +2,8 @@
 Screen_Modern::Screen_Modern(RenderWindow* window, int n, int m, float img_size, float width_UI) :Screen_Classic(window, n, m, img_size, width_UI) {
     steps_remaining = 3;
     texture_barrier = new Texture;
-    if (!texture_barrier->loadFromFile("images/purble.jpg")) {
-        cout << "Not load from file images/purble.jbg";
+    if (!texture_barrier->loadFromFile("images/poison.png")) {
+        cout << "Not load from file images/poison.png";
     }
     sprite_barrier = new Sprite(*texture_barrier);
     sprite_barrier->scale(1.5f, 1.5f);
