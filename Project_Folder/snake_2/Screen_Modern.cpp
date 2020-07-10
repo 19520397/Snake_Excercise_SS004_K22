@@ -29,7 +29,7 @@ Screen_Modern::~Screen_Modern() {
 }
 void Screen_Modern::tranfer_barrier() {
     if (isKeychanged == true) steps_remaining--;
-    if (steps_remaining == 0) {
+    if (steps_remaining == -1) {
 
         //tranfer form food to barrier
         Fruit* coor = new Fruit;
