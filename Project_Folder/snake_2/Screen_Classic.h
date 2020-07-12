@@ -53,15 +53,17 @@ protected:
 	Snake* s;
 	DIRECTION direction;
 	int length;
+	float delay = 0.1;
 
 	Fruit* f;
 
 	RenderWindow* window;
 
-	Texture *t1, *t2, *t3, *t4, *t_intruct, *t_pause, * text_key;
+	Texture *t1, *t2, *t3, *t4, *t5, *t_intruct, *t_pause, * text_key;
 
 	Sprite* sprite_white;
 	Sprite* sprite_red;
+	Sprite* sprite_red2;
 	Sprite* sprite_purple;
 	Sprite* sprite_green;
 	Sprite* sprite_intruct;

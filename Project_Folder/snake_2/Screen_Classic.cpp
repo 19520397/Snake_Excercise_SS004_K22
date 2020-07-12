@@ -25,6 +25,7 @@ Screen_Classic::Screen_Classic(RenderWindow* window, int n, int m, float img_siz
     t2 = new Texture();
     t3 = new Texture();
     t4 = new Texture();
+    t5 = new Texture();
     t_intruct = new Texture();
     t_pause = new Texture();
     text_key = new Texture();
@@ -33,12 +34,14 @@ Screen_Classic::Screen_Classic(RenderWindow* window, int n, int m, float img_siz
     t2->loadFromFile("images/red.png");
     t3->loadFromFile("images/purble.jpg");
     t4->loadFromFile("images/green_2.png");
+    t5->loadFromFile("images/red_2.png");
     t_intruct->loadFromFile("images/key.png");
     t_pause->loadFromFile("images/esc.png");
     text_key->loadFromFile("images/white.png");
 
     sprite_white = new Sprite(*t1);
     sprite_red = new Sprite(*t2);
+    sprite_red2 = new Sprite(*t5);
     sprite_purple = new Sprite(*t3);
     sprite_green = new Sprite(*t4);
     sprite_intruct = new Sprite(*t_intruct);
@@ -47,6 +50,7 @@ Screen_Classic::Screen_Classic(RenderWindow* window, int n, int m, float img_siz
 
     sprite_white->scale(1.5f, 1.5f);
     sprite_red->scale(1.5f, 1.5f);
+    sprite_red2->scale(1.5f, 1.5f);
     sprite_purple->scale(1.5f, 1.5f);
     sprite_green->scale(1.5f, 1.5f);
     sprite_intruct->scale(0.5f, 0.5f);
@@ -137,7 +141,7 @@ Screen_Classic::Screen_Classic(RenderWindow* window, int n, int m, float img_siz
 
     buffer->loadFromFile("audio/eatfood.ogg");
     sound_eatfood->setBuffer(*buffer);
-    sound_eatfood->setVolume(50.f);
+    sound_eatfood->setVolume(30.f);
 }
 
 Screen_Classic::~Screen_Classic()
@@ -145,7 +149,7 @@ Screen_Classic::~Screen_Classic()
     delete[] s;
     delete f;
     delete sprite_white;
-    delete sprite_red;
+    delete sprite_red, sprite_red2;
     delete sprite_purple;
     delete sprite_green;
     delete sprite_intruct;
@@ -161,7 +165,7 @@ Screen_Classic::~Screen_Classic()
     delete sound_eatfood;
     delete buffer;
 
-    delete t1, t2, t3, t4, t_intruct, t_pause, text_key;
+    delete t1, t2, t3, t4, t5, t_intruct, t_pause, text_key;
 }
 
 void Screen_Classic::update()
@@ -200,6 +204,7 @@ void Screen_Classic::update()
         sound_eatfood->play();
         score += 10;
         length++;
+        delay -= 0.002f;
         foodeating = true;
     }
     else { foodeating = false; }
@@ -301,11 +306,13 @@ void Screen_Classic::draw_background()
 
 void Screen_Classic::draw_snake()
 {
-    // Draw snake
-    for (int i = 0; i < length; i++)
+    // Draw snake's body
+    for (int i = 1; i < length; i++)
     {
-        sprite_red->setPosition(s[i].x * img_size, s[i].y * img_size);  window->draw(*sprite_red);
+        sprite_red2->setPosition(s[i].x * img_size, s[i].y * img_size);  window->draw(*sprite_red2);
     }
+    // Draw snkae's head
+    sprite_red->setPosition(s[0].x * img_size, s[0].y * img_size);  window->draw(*sprite_red);
 }
 
 void Screen_Classic::draw_food()
@@ -375,7 +382,7 @@ int Screen_Classic::start()
 
         isAlive = true;
 
-        float timer = 0, delay = 0.1;
+        float timer = 0;
 
         score = 0;
         length = 3;
