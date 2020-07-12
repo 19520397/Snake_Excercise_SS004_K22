@@ -494,7 +494,7 @@ int Screen_Classic::start()
                 // Player is died, ask if player want to try again
 				if (score>=10)
 				{
-					high_score_board::get_player_name(*window, width_board, height, score);
+					high_score_board::get_player_name(*window, width_board, height, score, lv);
 				}
                 draw();
                 draw();
@@ -528,7 +528,7 @@ int Screen_Classic::start()
                         cout << "Launch High Score board\n";
                         draw();
                         high_score_board high(window, width_board + width_UI, height);
-
+						
                         high.load();
                     }
                     else // getOption() == 0

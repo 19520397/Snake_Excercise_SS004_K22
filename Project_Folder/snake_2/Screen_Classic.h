@@ -6,6 +6,8 @@
 #include <string>
 #include "Selection.h"
 #include "high_score_board.h"
+#include "GameManager.h"
+
 
 using namespace sf;
 using std::cin;
@@ -43,6 +45,7 @@ protected:
 	float width_UI;
 
 	int score;
+	int lv = 2;
 	bool isAlive = false;
 	bool foodeating = false;
 	bool isKeychanged = false;
