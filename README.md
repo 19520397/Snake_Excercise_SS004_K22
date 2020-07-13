@@ -10,6 +10,8 @@ Thành viên:
 
 - Nguyễn Trọng Nhân - 19520801 - C0R3M3N (Tên trên dự án cũ)
 
+Đây là link latex của nhóm (only-read): https://www.overleaf.com/read/vbbbhsxyhqgj
+
 # Tiểu sử
 
 Dự án game đã được thực hiện từ ngày 20/06/2020 tại : https://github.com/19520397/Snake_Cplupplus

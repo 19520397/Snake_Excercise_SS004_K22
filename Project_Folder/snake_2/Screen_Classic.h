@@ -5,6 +5,10 @@
 #include <iostream>
 #include <string>
 #include "Selection.h"
+#include "high_score_board.h"
+#include "GameManager.h"
+
+
 using namespace sf;
 using std::cin;
 using std::cout;
@@ -41,6 +45,7 @@ protected:
 	float width_UI;
 
 	int score;
+	int lv = 2;
 	bool isAlive = false;
 	bool foodeating = false;
 	bool isKeychanged = false;
@@ -75,11 +80,16 @@ protected:
 	Sound* sound_eatfood;
 	SoundBuffer* buffer;
 
+	const std::string path_tip = "images/tip_classic.png";
+
 public:
+	
 	Screen_Classic(RenderWindow* window, int n, int m, float img_size, float width_UI);
 	~Screen_Classic();
 	int getScore() { return score; }
-	void start();
+	virtual const std::string getPath_Tip() { return path_tip; }
+	void print_Tips();
+	int start();
 	void draw();
 	void draw_effect();
 	void draw_background();
