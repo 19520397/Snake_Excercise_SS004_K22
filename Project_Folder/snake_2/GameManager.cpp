@@ -44,7 +44,7 @@ void GameManager::start()
 	chooseLevel.setTitle_Color(Color::White);
 	chooseLevel.setTitle_Size(100);
 	chooseLevel.setTitle_Outline(Color::Red, 2.0f);
-	chooseLevel.setOptions_List(new vector<std::string>{ "Challenge", "Modern", "Classic" });
+	chooseLevel.setOptions_List(new vector<std::string>{"Modern", "Classic" });
 	chooseLevel.setOption_Font(font_arcade);
 	chooseLevel.setOption_Color(Color::White);
 	chooseLevel.setOption_Size(72);
@@ -70,11 +70,11 @@ void GameManager::start()
 			cout << "Choose Level\n";
 			chooseLevel.load();
 			int lv = chooseLevel.getOption();
-			if (lv == 0)
+			if (lv == 3)
 			{
 				cout << "Start screen challenge\n";
 			}
-			else if (lv == 1)
+			else if (lv == 0)
 			{
 				cout << "Start screen modern\n";
 				Screen_Modern* screen_modern = new Screen_Modern(&window, N, M, img_size, width_UI);
@@ -93,7 +93,7 @@ void GameManager::start()
 				}
 				delete screen_modern;
 			}
-			else if (lv == 2)
+			else if (lv == 1)
 			{
 				Screen_Classic* screen_classic = new Screen_Classic(&window, N, M, img_size, width_UI);
 				screen_classic->print_Tips();
