@@ -45,7 +45,6 @@ protected:
 	float width_UI;
 
 	int score;
-	int lv = 2;
 	bool isAlive = false;
 	bool foodeating = false;
 	bool isKeychanged = false;
@@ -85,11 +84,78 @@ protected:
 	const std::string path_tip = "images/tip_classic.png";
 
 public:
-	
 	Screen_Classic(RenderWindow* window, int n, int m, float img_size, float width_UI);
 	~Screen_Classic();
 	int getScore() { return score; }
 	virtual const std::string getPath_Tip() { return path_tip; }
+	virtual void write_to_file(std::string tmp, int score)
+	{
+
+		//out put to file
+		std::vector<int> score_vec;
+		std::vector<std::string> name_vec;
+		std::ifstream myfile_in("high_score/high_score.txt");
+		if (myfile_in.is_open()) //set String line by line
+		{
+			cout << "Read file success\n";
+			std::string temp;
+			int dow = 0;
+			while (getline(myfile_in, temp))
+			{
+
+				std::size_t pos1 = temp.find("@");
+				std::string str3 = temp.substr(pos1 + 1);
+				std::stringstream geek(str3);
+				int thom;
+				geek >> thom;
+				name_vec.push_back(temp);
+				score_vec.push_back(thom);
+			}
+			myfile_in.close();
+		}
+		std::ofstream myfile("high_score/high_score.txt");
+		if (myfile.is_open()) {
+			int count = 0;
+			bool is_high_score = false;
+
+
+			for (int i = 0; i < name_vec.size(); i++)
+			{
+				if (score_vec[i] >= score)
+				{
+					myfile << name_vec[i] << "\n";
+				}
+				else
+				{
+					if (!is_high_score)
+					{
+						is_high_score = true;
+						cout << "you are in high score board! \n";
+						myfile << tmp << "@" << std::to_string(score) << "\n";
+						count++;
+						if (count >= 5)break;
+					}
+					myfile << name_vec[i] << "\n";
+				}
+				count++;
+				if (count >= 5)break;
+			}
+			if (name_vec.size() < 5 && !is_high_score)
+			{
+				is_high_score = true;
+				cout << "you are in high score board! \n";
+				myfile << tmp << "@" << std::to_string(score) << "\n";
+			}
+
+
+			myfile.close();
+		}
+		else cout << "Unable to open file";
+
+	}
+	virtual bool is_high_score(int score) {
+		return high_score_board::is_high_score_classic(score);
+	}
 	void print_Tips();
 	int start();
 	void draw();

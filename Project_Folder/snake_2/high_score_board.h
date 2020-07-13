@@ -19,7 +19,8 @@ private:
 	float height;
 	float width;
 public:
-	static std::string get_player_name(sf::RenderWindow& window, float width_board, float height_board, int score,int lv) {
+	static std::string get_player_name(sf::RenderWindow& window, float width_board, float height_board, int score) {
+		
 		cout << "get player name\n";
 		sf::Texture t;
 		t.create(window.getSize().x, window.getSize().y);
@@ -32,7 +33,7 @@ public:
 		{
 			cout << "ERROR: Could not load font";
 		}
-		if (!font2.loadFromFile("Fonts/MAGNETOB.TTF"))
+		if (!font2.loadFromFile("Fonts/Oswald-Medium.ttf"))
 		{
 			cout << "ERROR: Could not load font";
 		}
@@ -68,13 +69,17 @@ public:
 			txt.setFillColor(sf::Color::Yellow);
 			txt.setCharacterSize(100);
 			txt.setString("Your name please");
+			txt.setOutlineColor(sf::Color::Blue);
+			txt.setOutlineThickness(2.5f);
 			txt.setPosition((width_board) / 2 - txt.getGlobalBounds().width / 2, height_board / 3 - txt.getGlobalBounds().height / 2);
 
 
 			your_scoreTxt.setFillColor(sf::Color::Magenta);
 			your_scoreTxt.setFont(font);
 			your_scoreTxt.setCharacterSize(100);
-			your_scoreTxt.setString("Your Score " + std::to_string(score));
+			your_scoreTxt.setString("NEW HIGH SCORE");
+			your_scoreTxt.setOutlineColor(sf::Color::Black);
+			your_scoreTxt.setOutlineThickness(2.0f);
 			your_scoreTxt.setPosition((width_board) / 2 - your_scoreTxt.getGlobalBounds().width / 2, height_board / 3 - your_scoreTxt.getGlobalBounds().height / 2 - 100);
 
 
@@ -103,12 +108,10 @@ public:
 						if (filter.find(tmp.back()) == std::string::npos)
 						{
 							tmp.pop_back();
-							cout << "xoa by uncharacter\n";
 						}
 						if (tmp.size() > 12)
 						{
 							tmp.pop_back();
-							cout << "xoa by 14rule";
 						}
 					}
 				}
@@ -117,7 +120,6 @@ public:
 					if (!tmp.empty())
 					{
 						tmp.pop_back();
-						cout << "xoa by backspace\n";
 					}
 				}
 			}
@@ -133,136 +135,9 @@ public:
 
 		}
 		cout << "name got : " << tmp;
-		cout << "lv: " << lv << std::endl;
-		if (lv == 2)
-		{
-			//out put to file
-			std::vector<int> score_vec;
-			std::vector<std::string> name_vec;
-			std::ifstream myfile_in("high_score/high_score.txt");
-			if (myfile_in.is_open()) //set String line by line
-			{
-				cout << "Read file success\n";
-				std::string temp;
-				int dow = 0;
-				while (getline(myfile_in, temp))
-				{
-
-					std::size_t pos1 = temp.find("@");
-					std::string str3 = temp.substr(pos1 + 1);
-					std::stringstream geek(str3);
-					int thom;
-					geek >> thom;
-					name_vec.push_back(temp);
-					score_vec.push_back(thom);
-				}
-				myfile_in.close();
-			}
-			std::ofstream myfile("high_score/high_score.txt");
-			if (myfile.is_open()) {
-				int count = 0;
-				bool is_high_score = false;
-
-
-				for (int i = 0; i < name_vec.size(); i++)
-				{
-					if (score_vec[i] >= score)
-					{
-						myfile << name_vec[i] << "\n";
-					}
-					else
-					{
-						if (!is_high_score)
-						{
-							is_high_score = true;
-							cout << "you are in high score board! \n";
-							myfile << tmp << "@" << std::to_string(score) << "\n";
-							count++;
-							if (count >= 5)break;
-						}
-						myfile << name_vec[i] << "\n";
-					}
-					count++;
-					if (count >= 5)break;
-				}
-				if (name_vec.size() < 5 && !is_high_score)
-				{
-					is_high_score = true;
-					cout << "you are in high score board! \n";
-					myfile << tmp << "@" << std::to_string(score) << "\n";
-				}
-
-
-				myfile.close();
-			}
-			else cout << "Unable to open file";
-		}
-		else if (lv == 1) {
-			//out put to file
-			std::vector<int> score_vec;
-			std::vector<std::string> name_vec;
-			std::ifstream myfile_in("high_score/morden.txt");
-			if (myfile_in.is_open()) //set String line by line
-			{
-				cout << "Read file success\n";
-				std::string temp;
-				int dow = 0;
-				while (getline(myfile_in, temp))
-				{
-
-					std::size_t pos1 = temp.find("@");
-					std::string str3 = temp.substr(pos1 + 1);
-					std::stringstream geek(str3);
-					int thom;
-					geek >> thom;
-					name_vec.push_back(temp);
-					score_vec.push_back(thom);
-				}
-				myfile_in.close();
-			}
-			std::ofstream myfile("high_score/morden.txt");
-			if (myfile.is_open()) {
-				int count = 0;
-				bool is_high_score = false;
-
-
-				for (int i = 0; i < name_vec.size(); i++)
-				{
-					if (score_vec[i] >= score)
-					{
-						myfile << name_vec[i] << "\n";
-					}
-					else
-					{
-						if (!is_high_score)
-						{
-							is_high_score = true;
-							cout << "you are in high score board! \n";
-							myfile << tmp << "@" << std::to_string(score) << "\n";
-							count++;
-							if (count >= 5)break;
-						}
-						myfile << name_vec[i] << "\n";
-					}
-					count++;
-					if (count >= 5)break;
-				}
-				if (name_vec.size() < 5 && !is_high_score)
-				{
-					is_high_score = true;
-					cout << "you are in high score board! \n";
-					myfile << tmp << "@" << std::to_string(score) << "\n";
-				}
-
-
-				myfile.close();
-			}
-			else cout << "Unable to open file";
-		}
+	
 		return tmp;
 	}
-
-
 	high_score_board(sf::RenderWindow* window, float width, float height) : window(window), width(width), height(height)
 	{
 		font = new sf::Font();
@@ -272,6 +147,50 @@ public:
 		}
 		txt = new sf::Text();
 		txt->setFont(*font);
+	}
+	static bool is_high_score_classic(int score) {
+		std::vector<int> score_vec;
+		std::ifstream myfile_in("high_score/high_score.txt");
+		if (myfile_in.is_open()) //set String line by line
+		{
+			cout << "Read file success\n";
+			std::string temp;
+			int dow = 0;
+			while (getline(myfile_in, temp))
+			{
+
+				std::size_t pos1 = temp.find("@");
+				std::string str3 = temp.substr(pos1 + 1);
+				std::stringstream geek(str3);
+				int thom;
+				geek >> thom;
+				score_vec.push_back(thom);
+			}
+			myfile_in.close();
+		}
+		return score>score_vec.back()||score_vec.size()<5;
+	}
+	static bool is_high_score_modern(int score) {
+		std::vector<int> score_vec;
+		std::ifstream myfile_in("high_score/morden.txt");
+		if (myfile_in.is_open()) //set String line by line
+		{
+			cout << "Read file success\n";
+			std::string temp;
+			int dow = 0;
+			while (getline(myfile_in, temp))
+			{
+
+				std::size_t pos1 = temp.find("@");
+				std::string str3 = temp.substr(pos1 + 1);
+				std::stringstream geek(str3);
+				int thom;
+				geek >> thom;
+				score_vec.push_back(thom);
+			}
+			myfile_in.close();
+		}
+		return score > score_vec.back() || score_vec.size() < 5;
 	}
 	struct top_player
 	{
@@ -311,18 +230,18 @@ public:
 
 		txt->setCharacterSize(70);
 		txt->setFillColor(sf::Color::Magenta);
-		txt->setPosition(740, height / 6 - 65 - 70);
+		txt->setPosition(740, height / 3 - 65 - 70);
 		txt->setString("Morden mode");
 		window->draw(*txt);
 
 		txt->setCharacterSize(60);
 		txt->setFillColor(sf::Color::White);
-		txt->setPosition(100, height / 3 - 65);
-		txt->setString("name    score");
+		txt->setPosition(65, height / 3 - 65);
+		txt->setString("name     score");
 		window->draw(*txt);
 
-		txt->setPosition(780, height / 6 - 65);
-		txt->setString("name    score");
+		txt->setPosition(740, height / 3 - 65);
+		txt->setString("name     score");
 		window->draw(*txt);
 		
 		txt->setCharacterSize(50);
@@ -361,13 +280,13 @@ public:
 				std::size_t pos = temp.find("@");
 				std::string str2 = temp.substr(0, pos);
 				txt->setString(str2);
-				txt->setPosition(700, height / 6 + dow);
+				txt->setPosition(700, height / 3 + dow);
 				window->draw(*txt);
 
 				std::size_t pos1 = temp.find("@");
 				std::string str3 = temp.substr(pos1 + 1);
 				txt->setString(str3);
-				txt->setPosition(1125, height / 6 + dow);
+				txt->setPosition(1125, height / 3 + dow);
 				window->draw(*txt);
 				dow += 60;
 			}
@@ -389,7 +308,5 @@ public:
 		cout << "Back from High Score Board\n";
 		return;
 	}
-
-
 };
 

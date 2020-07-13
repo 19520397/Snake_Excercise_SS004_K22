@@ -22,6 +22,70 @@ Screen_Modern::Screen_Modern(RenderWindow* window, int n, int m, float img_size,
     txt_steps->setCharacterSize(23);
     txt_steps->setPosition(text_steps->getPosition().x + text_steps->getLocalBounds().width + 10, text_steps->getPosition().y + 5);
 }
+void write_to_file(std::string tmp, int score) {
+
+	//out put to file
+	std::vector<int> score_vec;
+	std::vector<std::string> name_vec;
+	std::ifstream myfile_in("high_score/morden.txt");
+	if (myfile_in.is_open()) //set String line by line
+	{
+		cout << "Read file success\n";
+		std::string temp;
+		int dow = 0;
+		while (getline(myfile_in, temp))
+		{
+
+			std::size_t pos1 = temp.find("@");
+			std::string str3 = temp.substr(pos1 + 1);
+			std::stringstream geek(str3);
+			int thom;
+			geek >> thom;
+			name_vec.push_back(temp);
+			score_vec.push_back(thom);
+		}
+		myfile_in.close();
+	}
+	std::ofstream myfile("high_score/morden.txt");
+	if (myfile.is_open()) {
+		int count = 0;
+		bool is_high_score = false;
+
+
+		for (int i = 0; i < name_vec.size(); i++)
+		{
+			if (score_vec[i] >= score)
+			{
+				myfile << name_vec[i] << "\n";
+			}
+			else
+			{
+				if (!is_high_score)
+				{
+					is_high_score = true;
+					cout << "you are in high score board! \n";
+					myfile << tmp << "@" << std::to_string(score) << "\n";
+					count++;
+					if (count >= 5)break;
+				}
+				myfile << name_vec[i] << "\n";
+			}
+			count++;
+			if (count >= 5)break;
+		}
+		if (name_vec.size() < 5 && !is_high_score)
+		{
+			is_high_score = true;
+			cout << "you are in high score board! \n";
+			myfile << tmp << "@" << std::to_string(score) << "\n";
+		}
+
+
+		myfile.close();
+	}
+	else cout << "Unable to open file";
+
+}
 Screen_Modern::~Screen_Modern() {
     //Screen_Classic::~Screen_Classic();
     delete txt_steps;
@@ -95,3 +159,5 @@ void Screen_Modern::draw_Steps() {
     window->draw(*text_steps);
     txt_steps->setString(std::to_string(steps_remaining)); window->draw(*txt_steps);
 }
+
+

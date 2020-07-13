@@ -1,5 +1,6 @@
 #include "Screen_Classic.h"
 
+
 Screen_Classic::Screen_Classic(RenderWindow* window, int n, int m, float img_size, float width_UI): width_board(n * img_size), height(m * img_size), width_UI(width_UI), img_size(img_size), M(m), N(n)
 {
 	if (window == NULL) throw std::invalid_argument("Null pointer");
@@ -499,9 +500,10 @@ int Screen_Classic::start()
             {
                 draw();
                 // Player is died, ask if player want to try again
-				if (score>=10)
+				if (is_high_score(score))
 				{
-					high_score_board::get_player_name(*window, width_board, height, score, lv);
+					std::string tmp = high_score_board::get_player_name(*window, width_board, height, score);
+					write_to_file(tmp, score);
 				}
                 draw();
                 draw();
@@ -543,6 +545,7 @@ int Screen_Classic::start()
                         cout << "Back to Main Menu\n";
                         return 0;
                     }
+					if (!window->isOpen()) { return 0; }
                     selection.load();
                 }
 
