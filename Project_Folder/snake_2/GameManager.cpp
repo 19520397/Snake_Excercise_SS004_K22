@@ -50,6 +50,7 @@ void GameManager::start()
 	chooseLevel.setOption_Size(72);
 	chooseLevel.setOption_OutLine(Color::Red, 2.0f);
 	chooseLevel.setCursor_Outline(Color::Red, 3.0f);
+
 	while (mainMenu.getOption() != 0)
 	{
 		if (mainMenu.getOption() == 1) // Credit
@@ -101,58 +102,11 @@ void GameManager::start()
 				{
 					delete screen_classic;
 					if (!window.isOpen()) {
-						cout << "Window has been closed\n"; break;
+						cout << "Window has been closed\n"; 
+						break;
 					}
 					else
 					{
-
-
-
-            cout << "Choose Level\n";
-            chooseLevel.load();
-            int lv = chooseLevel.getOption();
-            if (lv == 0)
-            {
-                cout << "Start screen challenge\n";
-            }
-            else if (lv == 1)
-            {
-                cout << "Start screen modern\n";
-                Screen_Modern* screen_modern = new Screen_Modern(&window, N, M, img_size, width_UI);
-                
-                if (screen_modern->start() == 1)
-                {
-                    delete screen_modern;
-                    if (!window.isOpen()) { 
-                        cout << "Window has been closed\n"; break; 
-                    }
-                    else
-                    {
-                        mainMenu.op = 3;
-                        continue;
-                    }
-                }
-                delete screen_modern;
-            }
-            else if (lv == 2)
-            {
-                Screen_Classic* screen_classic = new Screen_Classic(&window, N, M, img_size, width_UI);
-
-                if (screen_classic->start() == 1)
-                {
-                    delete screen_classic;
-                    if (!window.isOpen()) { 
-                        cout << "Window has been closed\n"; break; 
-                    }
-                    else
-                    {
-                        mainMenu.op = 3;
-                        continue;
-                    }
-                }
-                delete screen_classic;
-            }
-            else cout << "ERROR: Out of range\n";
 						mainMenu.op = 3;
 						continue;
 					}

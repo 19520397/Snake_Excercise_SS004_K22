@@ -99,7 +99,7 @@ public:
 		std::ifstream myfile_in("high_score/high_score.txt");
 		if (myfile_in.is_open()) //set String line by line
 		{
-			cout << "Read file success\n";
+			//cout << "Read file success\n";
 			std::string temp;
 			int dow = 0;
 			while (getline(myfile_in, temp))
@@ -115,6 +115,7 @@ public:
 			}
 			myfile_in.close();
 		}
+		else { cout << "Failed to read file\n"; }
 		std::ofstream myfile("high_score/high_score.txt");
 		if (myfile.is_open()) {
 			int count = 0;
@@ -132,7 +133,7 @@ public:
 					if (!is_high_score)
 					{
 						is_high_score = true;
-						cout << "you are in high score board! \n";
+						//cout << "you are in high score board! \n";
 						myfile << tmp << "@" << std::to_string(score) << "\n";
 						count++;
 						if (count >= 5)break;
@@ -145,14 +146,14 @@ public:
 			if (name_vec.size() < 5 && !is_high_score)
 			{
 				is_high_score = true;
-				cout << "you are in high score board! \n";
+				//cout << "You are in high score board! \n";
 				myfile << tmp << "@" << std::to_string(score) << "\n";
 			}
 
 
 			myfile.close();
 		}
-		else cout << "Unable to open file";
+		else cout << "Failed to open file";
 
 	}
 	virtual bool is_high_score(int score) {

@@ -19,9 +19,13 @@ private:
 	float height;
 	float width;
 public:
+	~high_score_board()
+	{
+		delete font, txt;
+	}
 	static std::string get_player_name(sf::RenderWindow& window, float width_board, float height_board, int score) {
 		
-		cout << "get player name\n";
+		cout << "Get player name\n";
 		sf::Texture t;
 		t.create(window.getSize().x, window.getSize().y);
 		t.update(window);
@@ -134,7 +138,7 @@ public:
 			window.display();
 
 		}
-		cout << "name got : " << tmp;
+		// cout << "name got : " << tmp;
 	
 		return tmp;
 	}
@@ -153,7 +157,7 @@ public:
 		std::ifstream myfile_in("high_score/high_score.txt");
 		if (myfile_in.is_open()) //set String line by line
 		{
-			cout << "Read file success\n";
+			
 			std::string temp;
 			int dow = 0;
 			while (getline(myfile_in, temp))
@@ -168,6 +172,7 @@ public:
 			}
 			myfile_in.close();
 		}
+		else { cout << "Failed to read file\n"; }
 		return score>score_vec.back()||score_vec.size()<5;
 	}
 	static bool is_high_score_modern(int score) {
@@ -175,7 +180,7 @@ public:
 		std::ifstream myfile_in("high_score/morden.txt");
 		if (myfile_in.is_open()) //set String line by line
 		{
-			cout << "Read file success\n";
+			//cout << "Read file success\n";
 			std::string temp;
 			int dow = 0;
 			while (getline(myfile_in, temp))
@@ -190,6 +195,7 @@ public:
 			}
 			myfile_in.close();
 		}
+		else { cout << "Failed to read file\n"; }
 		return score > score_vec.back() || score_vec.size() < 5;
 	}
 	struct top_player
@@ -249,7 +255,7 @@ public:
 
 		if (myfile.is_open()) //set String line by line 1
 		{
-			cout << "Read file success\n";
+			//cout << "Read file success\n";
 			std::string temp;
 			int dow = 0;
 			while (getline(myfile, temp))
@@ -269,10 +275,10 @@ public:
 			}
 			myfile.close();
 		}
-		
+		else { cout << "Failed to read file\n"; }
 		if (myfile2.is_open()) //set String line by line 2
 		{
-			cout << "Read file2 success\n";
+			//cout << "Read file2 success\n";
 			std::string temp;
 			int dow = 0;
 			while (getline(myfile2, temp))
@@ -292,7 +298,7 @@ public:
 			}
 			myfile2.close();
 		}
-
+		else { cout << "Failed to read file\n"; }
 		window->display();
 		while (window->isOpen() && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)))
 		{

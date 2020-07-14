@@ -387,6 +387,8 @@ int Screen_Classic::start()
     
     while (op)
     {
+        sound_die->play();
+
         srand(time(0));
 
         isAlive = true;
@@ -598,6 +600,14 @@ void Screen_Classic::draw_Steps() {
 
 void Screen_Classic::print_Tips()
 {    
+    SoundBuffer* buffer_tip = new SoundBuffer();
+    buffer_tip->loadFromFile("audio/beforegame.ogg");
+    Sound* sound_tip = new Sound();
+    sound_tip->setBuffer(*buffer);
+    sound_tip->setVolume(30.f);
+
+    sound_tip->play();
+
     Texture* t = new Texture();
     t->loadFromFile(getPath_Tip());
 
@@ -643,4 +653,5 @@ void Screen_Classic::print_Tips()
     delete t;
     delete sprite_tip;
     delete txt_ok;
+    delete buffer_tip;
 }

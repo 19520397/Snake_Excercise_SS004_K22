@@ -12,6 +12,8 @@ Thành viên:
 
 Đây là link latex của nhóm (only-read): https://www.overleaf.com/read/vbbbhsxyhqgj
 
+Link version Stable 1.5 : https://drive.google.com/file/d/1wc4q0NaF55eY22MRtZ-Zf22NoFZsPrDf/view?usp=sharing
+
 # Tiểu sử
 
 Dự án game đã được thực hiện từ ngày 20/06/2020 tại : https://github.com/19520397/Snake_Cplupplus
