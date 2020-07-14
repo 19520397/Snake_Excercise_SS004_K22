@@ -79,6 +79,8 @@ protected:
 	Text* txt_score, * txt, * txt2, * txt3, * txt4, * txt5;
 
 	Sound* sound_eatfood;
+	Sound* sound_die;
+	SoundBuffer* buffer_die;
 	SoundBuffer* buffer;
 
 	const std::string path_tip = "images/tip_classic.png";

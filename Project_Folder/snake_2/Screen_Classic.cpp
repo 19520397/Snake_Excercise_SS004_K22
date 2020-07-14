@@ -139,10 +139,16 @@ Screen_Classic::Screen_Classic(RenderWindow* window, int n, int m, float img_siz
 
     buffer = new SoundBuffer();
     sound_eatfood = new Sound();
+    sound_die = new Sound();
+    buffer_die = new SoundBuffer();
 
     buffer->loadFromFile("audio/eatfood.ogg");
+    buffer_die->loadFromFile("audio/message.ogg");
+
     sound_eatfood->setBuffer(*buffer);
     sound_eatfood->setVolume(30.f);
+    sound_die->setBuffer(*buffer_die);
+    sound_die->setVolume(30.f);
 }
 
 Screen_Classic::~Screen_Classic()
@@ -164,7 +170,9 @@ Screen_Classic::~Screen_Classic()
     delete txt_score, txt, txt2, txt3, txt4, txt5;
 
     delete sound_eatfood;
+    delete sound_die;
     delete buffer;
+    delete buffer_die;
 
     delete t1, t2, t3, t4, t5, t_intruct, t_pause, text_key;
 }
@@ -498,6 +506,7 @@ int Screen_Classic::start()
         if (window->isOpen()) {
             if (!isAlive)
             {
+                sound_die->play();
                 draw();
                 // Player is died, ask if player want to try again
 				if (is_high_score(score))

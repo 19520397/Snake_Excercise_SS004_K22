@@ -107,20 +107,28 @@ void Screen_Modern::tranfer_barrier() {
         f->x = rand() % (N - 2) + 1;
         f->y = rand() % (M - 2) + 1;
         int size_barrier = barrier.size();
-        for (int i = 0; i < length; i++) {
-            if (f->x == s[i].x && f->y == s[i].y) {
-                f->x = rand() % (N - 2) + 1;
-                f->y = rand() % (M - 2) + 1;
-                i = -1;
+        bool isOk = true;
+        while (!isOk)
+        {
+            isOk=true;
+            for (int i = 0; i < length; i++) {
+                //check duplicated snake
+                if (f->x == s[i].x && f->y == s[i].y) {
+                    f->x = rand() % (N - 2) + 1;
+                    f->y = rand() % (M - 2) + 1;
+                    isOk = false;
+                    break;
+                }
+                else {
+                    //check duplicated barrier
+
+                }
             }
-            else {
-                for (int j = 0; j < size_barrier; j++) {
-                    if (f->x == barrier[j].x && f->y == barrier[j].y) {
-                        f->x = rand() % (N - 2) + 1;
-                        f->y = rand() % (M - 2) + 1;
-                        i = -1;
-                        break;
-                    }
+            for (int j = 0; j < size_barrier && isOk; j++) {
+                if (f->x == barrier[j].x && f->y == barrier[j].y) {
+                    f->x = rand() % (N - 2) + 1;
+                    f->y = rand() % (M - 2) + 1;
+                    isOk = false;
                 }
             }
         }
