@@ -12,6 +12,8 @@ Thành viên:
 
 Đây là link latex của nhóm (only-read): https://www.overleaf.com/read/vbbbhsxyhqgj
 
+# Dowload game
+
 Link version Stable 1.5 : https://drive.google.com/file/d/1wc4q0NaF55eY22MRtZ-Zf22NoFZsPrDf/view?usp=sharing
 
 # Tiểu sử
@@ -20,11 +22,21 @@ Dự án game đã được thực hiện từ ngày 20/06/2020 tại : https://
 
 Nhưng vì một số lý do định danh để chấm điểm nên sẽ được re-make.
 
-Những bản commit đầu tiên chỉ để mô phỏng lại quá trình thực hiện từ trước. Tuy nhiên vì lý do thời gian và khó để mô phỏng chính xác 100% nên đã lược bớt nhiều. Vui lòng truy cập vào dự án cũ để biết chính xác về lịch sử chi tiết của game.
+Từ bản commit đầu tiên đến bản commit thứ 12 là mô phỏng lại quá trình thực hiện từ trước. Từ bản commit thứ 19 trở đi là phần làm tiếp từ project cũ.
+
+Tuy nhiên vì lý do thời gian và khó có thể mô phỏng chính xác 100% nên đã lược bớt nhiều. Vui lòng truy cập vào dự án cũ để biết chính xác về lịch sử chi tiết của game.
+
+# Clone project
+
+Clone project từ Github
+
+Sau đó, truy cập Project_Folder->snake_2.sln
+
+NOTE: Hàm main() nằm trong file Project_Folder/snake_2/GameManager.cpp
 
 # Chuẩn (Standard)
 
-IDE : Visual Studio 2019 (Solution nằm trong thư mục "Project_Folder")
+IDE : Visual Studio 2019
 
 Ngôn ngữ lập trình : C++ (Version C++14)
 
