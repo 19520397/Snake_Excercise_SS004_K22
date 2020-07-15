@@ -36,7 +36,6 @@ void GameManager::start()
 	mainMenu.setOption_Size(80);
 	mainMenu.setOption_OutLine(Color::Yellow, 2.0f);
 	mainMenu.setCursor_Outline(Color::Red, 3.0f);
-	mainMenu.load();
 
 	Selection chooseLevel(&window, width_board + width_UI, height_board);
 	chooseLevel.setTitle_String("Choose a level");
@@ -51,9 +50,11 @@ void GameManager::start()
 	chooseLevel.setOption_OutLine(Color::Red, 2.0f);
 	chooseLevel.setCursor_Outline(Color::Red, 3.0f);
 
-	while (mainMenu.getOption() != 0)
+	while (window.isOpen() )
 	{
-		if (mainMenu.getOption() == 1) // Credit
+		mainMenu.load();
+		if (mainMenu.getOption() == 0) break; // Quit
+		else if (mainMenu.getOption() == 1) // Credit
 		{
 			Credit credit(&window, width_board + width_UI, height_board);
 
@@ -62,15 +63,16 @@ void GameManager::start()
 		else if (mainMenu.getOption() == 2) // High Score Board
 		{
 			cout << "Launch High Score Board\n";
-			high_score_board high(&window, width_board + width_UI, height_board);
+			high_score_board* high = new high_score_board(&window, width_board + width_UI, height_board);
 			
-			high.load();
+			high->load();
+
+			delete high;
 		}
 		else if (mainMenu.getOption() == 3) // Start
 		{
 			cout << "Choose Level\n";
-			chooseLevel.load();
-			int lv = chooseLevel.getOption();
+			int lv = chooseLevel.load();
 			if (lv == 3)
 			{
 				cout << "Start screen challenge\n";
@@ -92,10 +94,11 @@ void GameManager::start()
 						continue;
 					}
 				}
-				delete screen_modern;
+				else delete screen_modern;
 			}
 			else if (lv == 1)
 			{
+				cout << "Start Screen Classic\n";
 				Screen_Classic* screen_classic = new Screen_Classic(&window, N, M, img_size, width_UI);
 				screen_classic->print_Tips();
 				if (screen_classic->start() == 1)
@@ -111,18 +114,20 @@ void GameManager::start()
 						continue;
 					}
 				}
-				delete screen_classic;
+				else delete screen_classic;
+			}
+			else if (!window.isOpen())
+			{
+				cout << "Window has been closed\n";
 			}
 			else cout << "ERROR: Out of range\n";
 		}
-		else cout << "ERROR: Out of range\n";
-
-		if (!window.isOpen())
+		else if (!window.isOpen())
 		{
 			cout << "Window has been closed\n";
-			break;
 		}
-		else mainMenu.load();
+		else cout << "ERROR: Out of range\n";
+		
 	}
 
 	if (!window.isOpen()) { window.close(); }

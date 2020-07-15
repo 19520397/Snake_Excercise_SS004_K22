@@ -58,15 +58,6 @@ int Selection::load()
 {
 	bool isChanged = true;
 
-	/*float back_ground_padding = 20;
-	float back_ground_height = txt_title->getGlobalBounds().height;
-	float back_ground_width = txt_title->getGlobalBounds().width;
-
-	sf::RectangleShape* back_ground = new sf::RectangleShape(sf::Vector2f(back_ground_width, back_ground_height));
-	back_ground->setPosition(txt_title->getPosition().x, txt_title->getPosition().y );
-	back_ground->setFillColor(Color::Black);
-	back_ground->setOutlineColor(Color::Green);
-	back_ground->setOutlineThickness(2.0f);*/
 
 	while (window->isOpen())
 	{
@@ -92,7 +83,10 @@ int Selection::load()
 		while (window->pollEvent(e))
 		{
 			if (e.type == sf::Event::Closed)
+			{
 				window->close();
+				break;
+			}
 		}
 
 		if (isChanged)
@@ -121,11 +115,11 @@ int Selection::load()
 
 	}
 
-	if (window->isOpen())
+	if (!window->isOpen())
 	{
-		return op;
+		op = -1;
 	}
-	else return 0;
+	return op;
 }
 
 void Selection::setOptions_List(vector<std::string>* options)
@@ -133,6 +127,7 @@ void Selection::setOptions_List(vector<std::string>* options)
 	if (options == NULL) throw std::invalid_argument("Null pointer");
 	else
 	{
+		delete this->options;
 		this->options = options;
 		op = options->size() - 1;
 	}

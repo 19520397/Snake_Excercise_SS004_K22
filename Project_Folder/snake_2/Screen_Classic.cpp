@@ -371,7 +371,6 @@ void Screen_Classic::gameOver()
 
 int Screen_Classic::start()
 {
-    cout << "Start Screen Classic\n";
     int op = 1;
     Clock clock;
     Clock clock2;
@@ -468,11 +467,16 @@ int Screen_Classic::start()
                 {
                     return 1;
                 }
-                else  /* Resume*/
+                else  if (selection.getOption() == 2)/* Resume*/
                 {
                     cout << "Resumed\n";
                     timer = 1.1f * delay;
                 }
+                else if (!window->isOpen())
+                {
+                    cout << "Window has been closed\n";
+                }
+                else cout << "ERROR: Out of range\n";
             }
 #pragma endregion
 
@@ -535,10 +539,9 @@ int Screen_Classic::start()
                 selection.setCursor_Color(Color::Green);
                 selection.setCursor_Outline(Color::Black, 3.0f);
 
-                selection.load();
-
-                while (selection.getOption() != 3)
+                while (window->isOpen())
                 {
+                    selection.load();
                     if (selection.getOption() == 2) // Change level
                     {
                         return 1;
@@ -548,21 +551,27 @@ int Screen_Classic::start()
                         cout << "Launch High Score board\n";
                         draw();
                         high_score_board high(window, width_board + width_UI, height);
-						
+
                         high.load();
                     }
-                    else // getOption() == 0
+                    else if (selection.getOption() == 0)// Main Menu
                     {
                         cout << "Back to Main Menu\n";
                         return 0;
                     }
-					if (!window->isOpen()) { return 0; }
-                    selection.load();
+                    else if (selection.getOption() == 3)// Play Again
+                    {
+                        // getOption() == 3
+                        cout << "Play again\n";
+                        op = 1;
+                    }
+                    else if (!window->isOpen())
+                    {
+                        cout << "Window has been closed\n";
+                    }
+                    else cout << "ERROR: Out of range\n";
+                   
                 }
-
-                // getOption() == 3
-                cout << "Play again\n";
-                op = 1;
             }
             else
             {
@@ -654,4 +663,5 @@ void Screen_Classic::print_Tips()
     delete sprite_tip;
     delete txt_ok;
     delete buffer_tip;
+    delete sound_tip;
 }
